@@ -2,6 +2,8 @@
 // Created by pedro and tiago on 05/04/2022.
 //
 
+//Oi Pedro :)
+
 #include <stdio.h>
 #include <string.h>
 
