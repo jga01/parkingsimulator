@@ -67,7 +67,7 @@ int main()
         switch(input)
         {
             case 0:
-                printf("Good bye!");
+                printf("Good bye!!");
                 return 0;
             case 1:
                 printf("Digite o nome do servidor: ");
