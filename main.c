@@ -11,14 +11,15 @@
 #define MAX 100
 
 // Dados dos servidores
+char flag_serv; // variável para indicar ocupação de um espaço na memoria // 1 - ocupado 0 - livre
 int codigos_servidores[MAX];
 char nomes_servidores[MAX][255];
 int siape_servidores[MAX];
-int rg_servidores[MAX];
 int cpf_serv[MAX];
+int nascimento_servidores[MAX];
+int rg_servidores[MAX];
 char endereco_servidores[MAX][255];
 int salario_servidores[MAX];
-int nascimento_servidores[MAX];
 char tipo_servidores[MAX][255];
 
 //Dados dos carros
@@ -30,11 +31,11 @@ char modelo_veiculos[MAX][255];
 
 void criarServidor(int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
 void atualizarServidor(int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
-void deletarCarro(int);
+void deletarServidor(int);
 
 void criarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
 void atualizarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
-void deletarServidor(int);
+void deletarCarro(int);
 
 //Listar tudo
 char listarDados(int);
@@ -89,6 +90,7 @@ int main()
                 break;
             case 7:
                 break;
+            // tem que haver um default para caso eu digite 8
         }
     }
 
