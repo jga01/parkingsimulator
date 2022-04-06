@@ -3,6 +3,7 @@
 //
 
 //Oi Pedro :)
+//Olá Tiago ! :D
 
 #include <stdio.h>
 #include <string.h>
