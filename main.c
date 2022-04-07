@@ -1,5 +1,5 @@
 //
-// Created by pedro and tiago on 05/04/2022.
+// Created by Pedro and Tiago on 05/04/2022.
 //
 
 #include <stdio.h>
