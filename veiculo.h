@@ -11,7 +11,7 @@ extern char marca[MAX][255];
 extern char modelo[MAX][255];
 
 void iniciar();
-void inserir_veiculo(int cod_veic[], int cod_serv[], char descricao[], char placa[], char marca[], char modelo[]);
+void inserir_veiculo(int cod_veic, int cod_serv, char descricao[], char placa[], char marca[], char modelo[]);
 void excluir_por_codigo(char cod_veic[]);
 void listar_veiculo();
 
