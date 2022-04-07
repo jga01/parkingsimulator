@@ -21,13 +21,17 @@ int main()
         printf("  | | | _|| (__ | _|  |  _// _ \\ |   /| ' <  | | | .` || (_ |\n");
         printf(" |___||_|  \\___||___| |_| /_/ \\_\\|_|_\\|_|\\_\\|___||_|\\_| \\___|\n\n");
 
+        printf("Area de Servidores: \n")
         printf("1. Registrar servidor.\n");
         printf("2. Atualizar servidor.\n");
         printf("3. Deletar servidor.\n");
-        printf("4. Registrar veiculo.\n");
-        printf("5. Atualizar veiculo\n");
-        printf("6. Deletar veiculo.\n");
-        printf("7. Listar\n");
+        printf("4. Listar servidores.\n\n");
+
+        printf("Area de Veiculos: \n")
+        printf("5. Registrar veiculo.\n");
+        printf("6. Atualizar veiculo\n");
+        printf("7. Deletar veiculo.\n");
+        printf("8. Listar veiculos.\n\n");
         printf("0. Sair do programa.\n\n");
         printf("Input: ");
 
@@ -51,18 +55,20 @@ int main()
                 //deletarServidor();
                 break;
             case 4:
-                printf("Digite o nome do carro: ");
-                //criarCarro();
+                //listarServidor();
                 break;
             case 5:
-                printf("Digite o codigo do carro: ");
-                //atualizarCarro();
+                //inserir_veiculo();
                 break;
             case 6:
-                printf("Digite o codigo do carro: ");
-                //deletarCarro();
+                //inserir_veiculo();
                 break;
             case 7:
+                //excluir_veiculo();
+                break;
+            case 8:
+                //listar_veiculo();
+            /*case 7:
                 printf("\n1. Listar Servidor. \n");
                 printf("2. Listar Carros. \n");
 
@@ -83,7 +89,7 @@ int main()
                         break;
                 }
 
-                break;
+                break;*/
         }
     }
 
