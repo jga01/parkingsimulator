@@ -12,7 +12,7 @@ void atualizarCarro(int cod_veic[], char desc_veic[][255], char placa_veic[][255
 {
     return ;
 }
-void deletarCarro(int cod_veic)
+void deletarCarro(int cod_veic[])
 {
     return ;
 }

@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "servidor.c"
+#include "veiculo.c"
 
 #define MAX 100
 
@@ -29,13 +31,15 @@ char placa_veiculos[MAX][255];
 char marca_veiculos[MAX][255];
 char modelo_veiculos[MAX][255];
 
-void criarServidor(int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
+/*
+void criarServidor(char[],int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
 void atualizarServidor(int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
 void deletarServidor(int);
 
 void criarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
 void atualizarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
-void deletarCarro(int);
+void deletarCarro(int[]);
+*/
 
 //Listar tudo
 char listarDados(int);
@@ -72,25 +76,30 @@ int main()
                 return 0;
             case 1:
                 printf("Digite o nome do servidor: ");
+                //criarServidor();
                 break;
             case 2:
                 printf("Digite o codigo do servidor: ");
+                //atualizarServidor();
                 break;
             case 3:
                 printf("Digite o codigo do servidor: ");
+                //deletarServidor();
                 break;
             case 4:
                 printf("Digite o nome do carro: ");
+                //criarCarro();
                 break;
             case 5:
                 printf("Digite o codigo do carro: ");
+                //atualizarCarro();
                 break;
             case 6:
                 printf("Digite o codigo do carro: ");
+                //deletarCarro();
                 break;
             case 7:
                 break;
-            // tem que haver um default para caso eu digite 8
         }
     }
 
