@@ -2,47 +2,10 @@
 // Created by pedro and tiago on 05/04/2022.
 //
 
-//Oi Pedro :)
-//Olá Tiago ! :D
-
 #include <stdio.h>
 #include <string.h>
 #include "servidor.c"
 #include "veiculo.c"
-
-#define MAX 100
-
-// Dados dos servidores
-char flag_serv; // variável para indicar ocupação de um espaço na memoria // 1 - ocupado 0 - livre
-int codigos_servidores[MAX];
-char nomes_servidores[MAX][255];
-int siape_servidores[MAX];
-int cpf_serv[MAX];
-int nascimento_servidores[MAX];
-int rg_servidores[MAX];
-char endereco_servidores[MAX][255];
-int salario_servidores[MAX];
-char tipo_servidores[MAX][255];
-
-//Dados dos carros
-int codigos_veiculos[MAX];
-char descricao_veiculos[MAX][255];
-char placa_veiculos[MAX][255];
-char marca_veiculos[MAX][255];
-char modelo_veiculos[MAX][255];
-
-/*
-void criarServidor(char[],int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
-void atualizarServidor(int[], char[][255], int[], int[], int[], char[][255], int[], int[], char[][255]);
-void deletarServidor(int);
-
-void criarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
-void atualizarCarro(int[], char[][255], char[][255], char[][255], char[][255]);
-void deletarCarro(int[]);
-*/
-
-//Listar tudo
-char listarDados(int);
 
 int main()
 {
