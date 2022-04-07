@@ -28,3 +28,7 @@ int veri_duplic(char first,char second)
     int duplicidade = 0;
     return duplicidade;
 }
+void listarServe()
+{
+    return ;
+}

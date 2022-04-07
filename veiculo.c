@@ -16,3 +16,7 @@ void deletarCarro(int cod_veic[])
 {
     return ;
 }
+void listarCarros()
+{
+    return ;
+}

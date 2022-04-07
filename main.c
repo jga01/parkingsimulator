@@ -48,6 +48,7 @@ int main()
 {
 
     int input = 2929;
+    int sec_input = 2929;
 
     while(input)
     {
@@ -99,6 +100,26 @@ int main()
                 //deletarCarro();
                 break;
             case 7:
+                printf("\n1. Listar Servidor. \n");
+                printf("2. Listar Carros. \n");
+
+                scanf("%d", &sec_input);
+
+                switch (sec_input) // se digitar algum valor fora dos case cai no while.
+                {
+                    case 1:
+                        //imprimir dados de um servidor em específico
+                        //imprimir todos os servidores
+                        // imprimir servidor E prof E Tec pela ordem alfabetica
+                        break;
+
+                    case 2:
+                        // imprimir dados de um veiculo de um cod especifico
+                        // imprimir todos os veiculos de um servidor
+                        // imprimir todos os veiculos de um servidor por ordem alfabetica
+                        break;
+                }
+
                 break;
         }
     }
