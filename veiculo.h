@@ -3,17 +3,19 @@
 
 #define MAX 100
 
-extern int cod_veic[MAX];
-extern int cod_serv[MAX];
-extern char descricao[MAX][255];
-extern char placa[MAX][255];
-extern char marca[MAX][255];
-extern char modelo[MAX][255];
-char ocupados[MAX];
+extern char codigos[MAX][255];
+extern char modelos[MAX][255];
+extern char descricoes[MAX][255];
+extern char placas[MAX][255];
+extern char marcas[MAX][255];
+extern int ocupados[MAX];
+extern int indice;
 
-void iniciar();
-void inserir_veiculo(int cod_veic, int cod_serv, char descricao[], char placa[], char marca[], char modelo[]);
-void excluir_veiculo(char cod_veic[]);
-void listar_veiculo();
+void iniciarVeiculo();
+void inserirVeiculo(char cod[], char mod[], char desc[], char plac[], char marc[]);
+void excluirVeiculo(int ind);
+void atualizarVeiculo(int ind, char cod[], char mod[], char desc[], char plac[], char marc[]);
+void listarVeiculo();
+int checarCodigos(char cod[]);
 
 #endif //VEICULO_H
