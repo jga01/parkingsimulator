@@ -22,6 +22,6 @@ void inserir_veiculo(int cod_veic, int cod_serv, char descricao[], char placa[],
             break;
         }
     }
-    cod_veic[index] = cod_veic;
-    strcpy()
+    //cod_veic[index] = cod_veic;
+    //strcpy()
 }

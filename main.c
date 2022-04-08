@@ -7,6 +7,7 @@
 #include "servidor.c"
 #include "veiculo.c"
 
+
 int main()
 {
 
@@ -21,13 +22,13 @@ int main()
         printf("  | | | _|| (__ | _|  |  _// _ \\ |   /| ' <  | | | .` || (_ |\n");
         printf(" |___||_|  \\___||___| |_| /_/ \\_\\|_|_\\|_|\\_\\|___||_|\\_| \\___|\n\n");
 
-        printf("Area de Servidores: \n")
+        printf("Area de Servidores: \n");
         printf("1. Registrar servidor.\n");
         printf("2. Atualizar servidor.\n");
         printf("3. Deletar servidor.\n");
         printf("4. Listar servidores.\n\n");
 
-        printf("Area de Veiculos: \n")
+        printf("Area de Veiculos: \n");
         printf("5. Registrar veiculo.\n");
         printf("6. Atualizar veiculo\n");
         printf("7. Deletar veiculo.\n");
@@ -43,8 +44,8 @@ int main()
                 printf("Good bye!!");
                 return 0;
             case 1:
-                printf("Digite o nome do servidor: ");
-                //criarServidor();
+                //printf("Digite o nome do servidor: ");
+                criarServidor();
                 break;
             case 2:
                 printf("Digite o codigo do servidor: ");
@@ -55,7 +56,7 @@ int main()
                 //deletarServidor();
                 break;
             case 4:
-                //listarServidor();
+                listarServe();
                 break;
             case 5:
                 //inserir_veiculo();
@@ -67,6 +68,7 @@ int main()
                 //excluir_veiculo();
                 break;
             case 8:
+                break;
                 //listar_veiculo();
             /*case 7:
                 printf("\n1. Listar Servidor. \n");
