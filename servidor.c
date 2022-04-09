@@ -90,9 +90,25 @@ void listarServe(char op[])
 
         if (ocupados[i] == 1)
         {
-            printf("%d\t %s\t %d\t %d\t %d\t %s\t %d\t %d\t %s\t \n", cod[i], nome_serv[i], siape[i], cpf[i],
-                   nascimento[i], ende_serv[i], rg_serv[i], salario[i], tipo_serv[i]);
+            if(strcmp(op,"1")){// printar os Tecnicos
+
+                if(!strcmp(tipo_serv[i],"tecnicos"));
+                printar_campos(i);
+            }
+            else if(strcmp(op,"2")){// printar os Professores
+
+                if(!strcmp(tipo_serv[i],"professor")){
+                    printar_campos(i);
+                }
+            }
+            else{
+                printar_campos(i);
+            }
         }
     }
     return ;
+}
+void printar_campos(int index){
+    printf("%d\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t \n", cod[index], nome_serv[index], siape[index], cpf[index],
+           nascimento[index], ende_serv[index], rg_serv[index], salario[index], tipo_serv[index]);
 }

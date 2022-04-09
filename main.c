@@ -73,9 +73,9 @@ int main()
             case 4: // printar servidor
 
                 printf("Digite a forma como deseja printar os servidores");
-                printf("1. Printar Todos os servidores \n");
+                printf("1. Printar apenas os Tecnicos \n");
                 printf("2. Printar apenas os professores \n");
-                printf("3. Printar apenas os Tecnicos \n");
+                printf("3. Printar Todos \n");
                 scanf("%d",&op);
                 //listarServe(op);
 

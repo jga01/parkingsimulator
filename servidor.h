@@ -19,6 +19,6 @@ void criarServidor();
 void atualizarServidor(char entrada[255]); // entraa normals
 void listarServer(char op[]);
 void deletarServidor();
-
+void printar_campos(int index);
 
 #endif //SERVIDOR_H

@@ -14,7 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Inserindo atualizar e criar servidor, procurando erro em comparação de string">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
@@ -91,7 +91,7 @@
       <workItem from="1649164144684" duration="8692000" />
       <workItem from="1649289878703" duration="6377000" />
       <workItem from="1649371868746" duration="10321000" />
-      <workItem from="1649456168532" duration="14360000" />
+      <workItem from="1649456168532" duration="15490000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649468795301</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas">
+      <created>1649471026207</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649471026207</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +173,8 @@
     <MESSAGE value="melhorando o esqueleto do programa" />
     <MESSAGE value="Tentando implementar criar servidor, sem sucesso, verificar o que ocorre com vetores e scanf" />
     <MESSAGE value="Inserindo atualizar e criar servidor, procurando erro em comparação de string" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inserindo atualizar e criar servidor, procurando erro em comparação de string" />
+    <MESSAGE value="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas" />
+    <option name="LAST_COMMIT_MESSAGE" value="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
