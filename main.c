@@ -10,6 +10,7 @@ void limparBuffer(char cod[]);
 
 int ind;
 char codigo[255], modelo [255], descricao[255], placa[255], marca[255];
+char codi_serv[MAX],nome_serv[MAX][255],siape[MAX],cpf[MAX],nascimento[MAX],ende_serv[MAX][255],rg_serv[MAX],salario_serv[MAX],tipo_serv[MAX][255];
 
 int main()
 {
@@ -50,16 +51,18 @@ int main()
                 printf("Encerrando o programa...");
                 return 0;
             case 1:
-                //printf("Digite o nome do servidor: ");
                 criarServidor();
                 break;
-            case 2:
-                printf("Digite o codigo do servidor: ");
-                //atualizarServidor();
+            case 2:// atualizar servidor
+
+                printf("Digite o cod do servidor :");
+                scanf("%s",&codi_serv);
+
+                atualizarServidor(codi_serv);
                 break;
             case 3:
                 printf("Digite o codigo do servidor: ");
-                //deletarServidor();
+                deletarServidor();
                 break;
             case 4:
                 listarServe();
@@ -118,6 +121,7 @@ int main()
                 atualizarVeiculo(ind-1, codigo, modelo, descricao, placa, marca);
 
                 printf("\n");
+
                 break;
             case 7:
                 printf("Insira o indice: ");
