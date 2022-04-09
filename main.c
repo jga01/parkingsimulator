@@ -4,13 +4,15 @@
 
 #include <stdio.h>
 #include "servidor.c"
+#include "servidor.h"
 #include "veiculo.h"
+#include "veiculo.c"
 
 void limparBuffer(char cod[]);
 
 int ind;
 char codigo[255], modelo [255], descricao[255], placa[255], marca[255];
-char entrada[255],codi_serv[MAX],nome_serv[MAX][255],siape[MAX],cpf[MAX],nascimento[MAX],ende_serv[MAX][255],rg_serv[MAX],salario_serv[MAX],tipo_serv[MAX][255];
+char entrada[255];
 int op;
 
 
@@ -50,8 +52,10 @@ int main()
         switch(input)
         {
             case 0:
+
                 printf("Encerrando o programa...");
                 return 0;
+
             case 1: // criar servidor
 
                 criarServidor();
@@ -61,23 +65,28 @@ int main()
 
                 printf("Digite o cod do servidor :");
                 scanf("%s",&entrada);
+
                 atualizarServidor(entrada);
                 break;
 
             case 3: // deletar servidor
 
                 printf("Digite o codigo do servidor: ");
-                deletarServidor();
+                scanf("%s", &entrada);
+                deletarServidor(entrada);
                 break;
 
             case 4: // printar servidor
 
-                printf("Digite a forma como deseja printar os servidores");
+                printf("Digite a forma como deseja printar os servidores\n\n");
                 printf("1. Printar apenas os Tecnicos \n");
                 printf("2. Printar apenas os professores \n");
                 printf("3. Printar Todos \n");
+                printf("4.Printar um servidor pelo cod dele.\n");
+
                 scanf("%d",&op);
-                //listarServe(op);
+
+                listarServer(op);
 
                 break;
             case 5:

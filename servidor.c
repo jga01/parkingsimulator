@@ -11,31 +11,31 @@ void cadastro(int index)
     /*
      * função que irá ficando cadastrando e inserindo atualizações
      * */
-    printf("\nDigite o Codigo do Servidor : \n");
-    scanf("%d",&cod);
-    printf("Digite o Nome do Servidor : \n");
-    fgets(nome_serv[index],255,stdin);
-    printf("Digite o Siape do Servidor : \n");
-    fgets(&siape[index],10,stdin);
-    printf("Digite o Cpf do Servidor : \n");
-    fgets(&cpf[index],20,stdin);
+    printf("Digite o Codigo do Servidor : \n:");
+    scanf("%d",&cod[index]);
+    printf("Digite o Nome do Servidor : \n:");
+    scanf("%s",&nome_serv[index]);
+    printf("Digite o Siape do Servidor : \n:");
+    scanf("%s",&siape[index]);
+    printf("Digite o Cpf do Servidor : \n:");
+    scanf("%s",&cpf[index]);
 
     // termino das obrigações
 
     /*printf("\nDeseja adicionar os campos nao obrigatorios ? [Y/N]\n");
     fgets(&n_obri,2,stdin);*/
 
-    printf("Digite a data de nascimento do Servidor : \n");
-    fgets(&nascimento[index],255,stdin);
-    printf("Digite o endereco do Servidor : \n");
-    fgets(ende_serv[index],255,stdin);
-    printf("Digite o Rg do Servidor : \n");
-    fgets(&rg_serv[index],50,stdin);
-    printf("Digite o salario do servidor : \n");
-    fgets(&salario[index],15,stdin);
-    printf("Digite a categoria do Servidor : \nProfessor ou Tecnico\n");
-    fgets(tipo_serv[index],255,stdin);
+    printf("Digite a data de nascimento do Servidor : \n:");
+    scanf("%s",&nascimento[index]);
+    printf("Digite o Rg do Servidor : \n:");
+    scanf("%s",&rg_serv[index]);
+    printf("Digite o salario do servidor : \n:");
+    scanf("%s",&salario[index]);
+    printf("Digite a categoria do Servidor : \nProfessor ou Tecnico\n:");
+    scanf("%s",&tipo_serv[index]);
 
+    printf("Digite o endereco do Servidor : \n:"); // usar a ideia da concatenação ?
+    scanf("%s",&ende_serv[index]);
     ocupados[index] = 1;
 }
 
@@ -43,7 +43,7 @@ void criarServidor()
 {
     int i,index = 0; // index vai funcionar como cod do dado
 
-    for( i = 0 ;  i < MAX ; i++)
+    for( i = 0 ;  i < MAX ; i++) // Verificando indices livres
     {
         if(!(ocupados[i]))
         {
@@ -80,35 +80,66 @@ void deletarServidor()
     return ;
 }
 
-void listarServe(char op[])
+void listarServer(int op)
 {
     // criar os panoramas pedidos no projeto do professor
     // ou printa todos ou um caso específico
-    int i;
+    int i,j;
+    int codigoServidorInformado;
 
-    for(i = 0 ; i < MAX ; i++) {
+    switch (op) {
 
-        if (ocupados[i] == 1)
-        {
-            if(strcmp(op,"1")){// printar os Tecnicos
-
-                if(!strcmp(tipo_serv[i],"tecnicos"));
-                printar_campos(i);
-            }
-            else if(strcmp(op,"2")){// printar os Professores
-
-                if(!strcmp(tipo_serv[i],"professor")){
+        case 1:
+            for (i = 0; i < MAX; i++)
+            {
+                if (!strncmp(tipo_serv[i], "tecnicos", 5))
+                {
                     printar_campos(i);
                 }
-            }
-            else{
+            }break;
+
+        case 2:
+            for(i = 0; i< MAX; i++)
+            {
+                if(!strncmp(tipo_serv[i],"professor",5))
+                {
+                    printar_campos(i);
+                }
+            }break;
+
+        case 3:
+            for(i = 0; i < MAX ; i++)
+            {
                 printar_campos(i);
-            }
-        }
+            }break;
+
+        case 4:
+
+            for(i = 0 ; i < MAX ; i++)
+            {
+                printf("Digite o cod do servidor : \n");
+                scanf("%d",&codigoServidorInformado);
+
+                for( j = 0 ; j < MAX ; j++)
+                {
+                    if(codigoServidorInformado == cod[j])
+                    {
+                        printar_campos(j);
+
+                    }else printf("O capo Informado não existe \n");
+                }
+            }break;
+
+        default:
+            printf("Essa opção não existe \n");
+            break;
     }
-    return ;
 }
-void printar_campos(int index){
-    printf("%d\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t \n", cod[index], nome_serv[index], siape[index], cpf[index],
-           nascimento[index], ende_serv[index], rg_serv[index], salario[index], tipo_serv[index]);
+
+
+int printar_campos(int index)
+{
+    printf("COD\tNome\tSiape\tCpf\tNascimento\tEndereco\tRg\tSalario\tTipo\n");
+    printf("%d\t %s\t%s \t%s \t%s \t%s \t%s \t%s \t%s\n", cod[index], nome_serv[index], siape[index], cpf[index],nascimento[index], ende_serv[index], rg_serv[index], salario[index], tipo_serv[index]);
+    return 0;
 }

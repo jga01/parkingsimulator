@@ -14,8 +14,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="implementando aa função de print por opção">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.h" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.h" afterDir="false" />
@@ -91,7 +92,8 @@
       <workItem from="1649164144684" duration="8692000" />
       <workItem from="1649289878703" duration="6377000" />
       <workItem from="1649371868746" duration="10321000" />
-      <workItem from="1649456168532" duration="15490000" />
+      <workItem from="1649456168532" duration="17373000" />
+      <workItem from="1649501793293" duration="9502000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -149,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649471026207</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="implementando aa função de print por opção">
+      <created>1649471905765</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649471905765</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,7 +183,8 @@
     <MESSAGE value="Tentando implementar criar servidor, sem sucesso, verificar o que ocorre com vetores e scanf" />
     <MESSAGE value="Inserindo atualizar e criar servidor, procurando erro em comparação de string" />
     <MESSAGE value="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas" />
-    <option name="LAST_COMMIT_MESSAGE" value="correção de possiveis falhas dentro das novas implementações e melhorando as estruturas delas" />
+    <MESSAGE value="implementando aa função de print por opção" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementando aa função de print por opção" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
