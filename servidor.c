@@ -47,7 +47,7 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
 
     for( i = 0; i < MAX ; i++)
     {
-        if(!strcmp(entrada,cod[i]))
+        if(!strncmp(entrada,cod[i],3))
         {
             index = i;
             break;
@@ -151,7 +151,7 @@ int printar_campos(int index) {
 
     for(i = 0 ; i < MAX ; ++i) {
         if (ocupados[i]) {
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[index], nome_serv[index], siape_serv[index],
+            printf("%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%s\t\t%s\n", cod[index], nome_serv[index], siape_serv[index],
                    cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
                    ende_serv[index]);
         }
@@ -173,4 +173,30 @@ int printar_campos(int index) {
 
 
     return 0;
+}
+int existe_cod(char cod[])
+{
+    int i;
+    for( i = 0 ; i < MAX ; ++i)
+    {
+        if(ocupados[i]) return 1;
+    }
+    return 0;
+}
+
+int checaEntrada(char codigo[],char nome[], char siape[],char endereco[])
+{
+    int input1,input2,input3,input4;
+
+    input1 = strcmp(codigo,"\n");
+    input2 = strcmp(siape,"\n");
+    input3 = strcmp(endereco,"\n");
+    input4 = strcmp(nome,"\n");
+    // se algum for igual a um enter == "\n" ele vai ter valor zero e tornar verdadeira a condição
+    if(!(input1 && input2 && input3 && input4)) {
+
+        printf("Digite Valores validos para entrada\n");
+        return 1;
+
+    }else return 0;
 }

@@ -58,15 +58,21 @@ int main()
 
             case 1: // criar servidor
 
-                printf("Digite o Codigo do Servidor : \n:");
-                scanf("%s", &identificador);
-                printf("Digite o Nome do Servidor : \n:");
-                scanf("%s", &nome);
-                printf("Digite o Siape do Servidor : \n:");
-                scanf("%s", &siape);
-                printf("Digite o Cpf do Servidor : \n:");
-                scanf("%s", &cpf);
+                do {
+                    printf("Digite o Codigo do Servidor : \n:");
+                    fgets(codigo, 255, stdin);
+                    printf("Digite o Nome do Servidor : \n:");
+                    fgets(nome, 255, stdin);
+                    printf("Digite o Siape do Servidor : \n:");
+                    fgets(siape, 255, stdin);
+                    printf("Digite o Cpf do Servidor : \n:");
+                    fgets(endereco, 255, stdin);
 
+                }while(checaEntrada(codigo,nome,siape,endereco));
+
+                nome[strcspn(nome, "\n")] = 0;
+                siape[strcspn(siape,"\n")] = 0;
+                cpf[strcspn(cpf,"\n")] = 0;
 
                 printf("Digite a data de nascimento do Servidor : \n:");
                 scanf("%s",&nasci);
@@ -87,13 +93,27 @@ int main()
 
                 printf("Digite o COD do servidor");
                 scanf("%s",&entrada);
-                printf("Digite o NOVO Nome do Servidor : \n:");
-                scanf("%s", &nome);
-                printf("Digite o NOVO Siape do Servidor : \n:");
-                scanf("%s", &siape);
-                printf("Digite o NOVO Cpf do Servidor : \n:");
-                scanf("%s", &cpf);
 
+
+                while(!existe_cod(entrada))
+                {
+                    printf("Esse cod não faz referencia a nenhum servidor\n");
+                    printf("Digite um cod valido\n:");
+                    scanf("%s",&entrada);
+                }
+                do {
+                    printf("Digite o NOVO Nome do Servidor : \n:");
+                    fgets(nome,255,stdin);
+                    printf("Digite o NOVO Siape do Servidor : \n:");
+                    fgets(siape,255,stdin);
+                    printf("Digite o NOVO Cpf do Servidor : \n:");
+                    fgets(cpf,255,stdin);
+
+                }while(checaEntrada(entrada,nome,siape,cpf));
+
+                nome[strcspn(nome, "\n")] = 0;
+                siape[strcspn(siape,"\n")] = 0;
+                cpf[strcspn(cpf,"\n")] = 0;
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
                 scanf("%s",&nasci);
