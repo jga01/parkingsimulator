@@ -12,8 +12,8 @@ void limparBuffer(char cod[]);
 
 int ind;
 char codigo[255], modelo [255], descricao[255], placa[255], marca[255];
-char entrada[255];
-int op;
+char identificador[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],salario[255],tipo[255],endereco[255];
+int op, check = 1;
 
 
 int main()
@@ -58,7 +58,31 @@ int main()
 
             case 1: // criar servidor
 
-                criarServidor();
+
+                printf("Digite o Codigo do Servidor : \n:");
+                scanf("%s", &identificador);
+                printf("Digite o Nome do Servidor : \n:");
+                scanf("%s", &nome);
+                printf("Digite o Siape do Servidor : \n:");
+                scanf("%s", &siape);
+                printf("Digite o Cpf do Servidor : \n:");
+                scanf("%s", &cpf);
+
+                if(!strcmp(identificador,"\0")) check = 0;
+
+                printf("Digite a data de nascimento do Servidor : \n:");
+                scanf("%s",&nasci);
+                printf("Digite o Rg do Servidor : \n:");
+                scanf("%s",&rg);
+                printf("Digite o salario do servidor : \n:");
+                scanf("%s",&salario);
+                printf("Digite a categoria do Servidor : \nProfessor ou Tecnico\n:");
+                scanf("%s",&tipo);
+                printf("Digite o endereco do Servidor : \n:"); // usar a ideia da concatenação ?
+                fflush(stdin);
+                fgets(endereco,255,stdin);
+
+                criarServidor(identificador,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
 
             case 2:// atualizar servidor
