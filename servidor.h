@@ -16,7 +16,7 @@ extern char tipo_serv[MAX][255];
 //char cod[], char nome_serv[][255], char siape[], char cpf[], char nascimento[], char ende_serv[][255], char rg_serv[], char salario_serv[], char tipo_serv[][255]
 //int cod[], char nome_serv[][255], int siape[], int cpf[], int nascimento[], char ende_serv[][255], int rg_serv[], int salario_serv[], char tipo_serv[][255]
 void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char nasci[],char rg[],char salario[],char tipo[],char endereco[]);
-void atualizarServidor(char entrada[255]); // entrada normal
+void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf[255],char nasci[255],char rg[255],char salario[255],char tipo[255],char endereco[255]); // entrada normal
 void listarServer(int op);
 void deletarServidor();
 int printar_campos(int index);

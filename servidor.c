@@ -27,8 +27,8 @@ void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char
             break;
         }
     }
-    // entrada de valores nos vetores globais.
     strcpy(cod[index], identificador);
+    //strcpy(cod[index], identificador);
     strcpy(nome_serv[index], nome);
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
@@ -41,13 +41,13 @@ void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char
 
 }
 
-void atualizarServidor(char input[])
+void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf[255],char nasci[255],char rg[255],char salario[255],char tipo[255],char endereco[255])
 {
     int  i,index = 0;
 
     for( i = 0; i < MAX ; i++)
     {
-        if(!strcmp(input,cod[i]))
+        if(!strcmp(entrada,cod[i]))
         {
             index = i;
             break;
@@ -55,10 +55,21 @@ void atualizarServidor(char input[])
     }
     if(!index)
     {
-        printf("Não foi possivel atualizar o dado porque ele não existe\n");
+        printf("Nao foi possivel atualizar o dado porque ele não existe\n");
         return ;
     }
-    //criarServidor()
+
+    // entrada de valores nos vetores globais.
+    //strcpy(cod[index], identificador);
+    strcpy(nome_serv[index], nome);
+    strcpy(siape_serv[index],siape);
+    strcpy(cpf_serv[index], cpf);
+    strcpy(nasci_serv[index], nasci);
+    strcpy(rg_serv[index], rg);
+    strcpy(salario_serv[index], salario);
+    strcpy(tipo_serv[index], tipo);
+    strcpy(ende_serv[index],endereco);
+    /*Ocupados já é 1*/
 
 }
 void deletarServidor()
@@ -76,7 +87,7 @@ void listarServer(int op)
     switch (op) {
 
         case 1:
-            printf("Cod\tNome\tSiape\tCpf\tNascimento\tRg\tSalario\tTipo\tEndereco\n");
+            printf("Cod\tNome\tSiape\tCpf\t\tNascimento\tRg\tSalario\tTipo\tEndereco\n");
 
             for (i = 0; i < MAX; i++)
             {
@@ -88,7 +99,7 @@ void listarServer(int op)
             break;
 
         case 2:
-            printf("Cod\tNome\tSiape\tCpf\tNascimento\tRg\tSalario\tTipo\tEndereco\n");
+            printf("Cod\tNome\tSiape\tCpf\t\tNascimento\tRg\tSalario\tTipo\tEndereco\n");
             for(i = 0; i< MAX; i++)
             {
                 if(!strncmp(tipo_serv[i],"professor",5))
@@ -107,7 +118,7 @@ void listarServer(int op)
 
         case 4:
 
-            printf("Cod\tNome\t\tSiape\t\tCpf\t\tNascimento\t\tRg\tSalario\t\tTipo\t\tEndereco\n\n");
+            printf("Cod\tNome\tSiape\tCpf\tNascimento\t\tRg\tSalario\t\tTipo\t\tEndereco\n\n");
             for(i = 0 ; i < MAX ; i++)
             {
                 printf("Digite o cod do servidor : \n");
@@ -130,10 +141,36 @@ void listarServer(int op)
 }
 
 
-int printar_campos(int index)
-{
+int printar_campos(int index) {
+    // imprimir o campo nome em ordem alfabetica
+    // tenho que pegar o nome e julgar com base em outros
+    // vou supor que a primeira palavra é a menor valor ordem alfabetica
+    int i;
+    char menor[255];
+    strcpy(menor, nome_serv[0]); // supondo que esse seja o menor
 
-    printf("%s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\t %s\n",cod[index],nome_serv[index],siape_serv[index], cpf_serv[index],nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index], ende_serv[index]);
+    for(i = 0 ; i < MAX ; ++i) {
+        if (ocupados[i]) {
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[index], nome_serv[index], siape_serv[index],
+                   cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
+                   ende_serv[index]);
+        }
+    }
+    /*
+    for( i = 1; i < MAX ; ++i)
+    {
+        if(ocupados[i])
+        {
+            printf("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s\t%s\n",cod[index],nome_serv[index],siape_serv[index], cpf_serv[index],nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index], ende_serv[index]);
+            if(strncmp(menor,nome_serv[i],3) > 0)
+            {
+                strcpy(menor,nome_serv[i]);// se a condição for sastifeita menor recebe outro valor
+
+            }
+
+        }
+    }*/
+
 
     return 0;
 }
