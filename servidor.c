@@ -12,7 +12,7 @@ void cadastro(int index)
      * função que irá ficando cadastrando e inserindo atualizações
      * */
     printf("\nDigite o Codigo do Servidor : \n");
-    fgets(&cod[index],100,stdin);
+    scanf("%d",&cod);
     printf("Digite o Nome do Servidor : \n");
     fgets(nome_serv[index],255,stdin);
     printf("Digite o Siape do Servidor : \n");
@@ -54,13 +54,14 @@ void criarServidor()
         cadastro(index);
 
 }
-void atualizarServidor(char codi_serv[])
+void atualizarServidor(char input[]) //
 {
     int  i,index = 0;
+    int cod_fornecido = atoi(input);
 
     for( i = 0; i < MAX ; i++)
     {
-        if(!strcmp(codi_serv,cod[i]))
+        if(cod_fornecido == cod[i]) // essa gambiarra é tudo pra não mexer com strcmp
         {
             index = i;
             break;
@@ -68,7 +69,7 @@ void atualizarServidor(char codi_serv[])
     }
     if(!index)
     {
-        printf("Não foi possivel atualizar o dado porque ele não existe");
+        printf("Não foi possivel atualizar o dado porque ele não existe\n");
         return ;
     }
         cadastro(index);
@@ -79,8 +80,10 @@ void deletarServidor()
     return ;
 }
 
-void listarServe()
+void listarServe(char op[])
 {
+    // criar os panoramas pedidos no projeto do professor
+    // ou printa todos ou um caso específico
     int i;
 
     for(i = 0 ; i < MAX ; i++) {
