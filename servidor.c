@@ -28,6 +28,17 @@ void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char
             break;
         }
     }
+
+    identificador[strcspn(identificador,"\n")] = 0;
+    nome[strcspn(nome, "\n")] = 0;
+    siape[strcspn(siape,"\n")] = 0;
+    cpf[strcspn(cpf,"\n")] = 0;
+    nasci[strcspn(nasci,"\n")] = 0;
+    rg[strcspn(rg, "\n")] = 0;
+    salario[strcspn(salario,"\n")] = 0;
+    tipo[strcspn(tipo,"\n")] = 0;
+    endereco[strcspn(endereco,"\n")] = 0;
+
     strcpy(cod[index], identificador);
     //strcpy(cod[index], identificador);
     strcpy(nome_serv[index], nome);
@@ -56,6 +67,16 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
     }
     // entrada de valores nos vetores globais.
     //strcpy(cod[index], identificador);
+    nome[strcspn(nome, "\n")] = 0;
+    siape[strcspn(siape,"\n")] = 0;
+    cpf[strcspn(cpf,"\n")] = 0;
+    nasci[strcspn(nasci,"\n")] = 0;
+    rg[strcspn(rg, "\n")] = 0;
+    salario[strcspn(salario,"\n")] = 0;
+    tipo[strcspn(tipo,"\n")] = 0;
+    endereco[strcspn(endereco,"\n")] = 0;
+
+
     strcpy(nome_serv[index], nome);
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
@@ -118,13 +139,15 @@ void listarServer(int op)
         case 3: // printar todos
 
             cabecalho();
-            for(i = 0; i < MAX ; i++)
+            for(i= 0 ; i < MAX ; ++i)
             {
-                if(ocupados[i])
-                {
-                    printar_campos(i);
+                if(ocupados[i]){
+                printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[i], nome_serv[i], siape_serv[i],
+                       cpf_serv[i], nasci_serv[i], rg_serv[i], salario_serv[i], tipo_serv[i],
+                       ende_serv[i]);
                 }
             }break;
+
 
         case 4: // printar por cod
 
@@ -163,39 +186,47 @@ int printar_campos(int index) {
     // imprimir o campo nome em ordem alfabetica
     // tenho que pegar o nome e julgar com base nos proximos valores
     // vou supor que a primeira palavra é a menor valor ordem alfabetica
-
+    ordenando();
     int i;
-
     for(i = 0 ; i < MAX ; ++i) {
 
         if (ocupados[i]) {
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[index], nome_serv[index], siape_serv[index],
+            printf("%s\t\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[index], nome_serv[index], siape_serv[index],
                    cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
                    ende_serv[index]);
         }
     }
-    /*
-     *
-    strcpy(menor, nome_serv[0]); // supondo que esse seja o menor
-    função para printar em ordem alfabetica tem que ser feita a parte
-    for( i = 1; i < MAX ; ++i)
-    {
-        if(ocupados[i])
-        {
-            printf("%s\t%s\t%s\t%s\t\t%s\t%s\t%s\t%s\t%s\n",cod[index],nome_serv[index],siape_serv[index], cpf_serv[index],nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index], ende_serv[index]);
-            if(strncmp(menor,nome_serv[i],3) > 0)
-            {
-                strcpy(menor,nome_serv[i]);// se a condição for sastifeita menor recebe outro valor
-
-            }
-
-        }
-    }
-     */
-
 
     return 0;
 }
+void ordenando()
+{
+    int i,j;
+    char auxiliar[255];
+    // ideia da suposição falhou
+    // ideia da sequencia de fibonnaci
+    // o strcpy
+
+    for( i = 1; i < MAX ; ++i)
+    {
+        for(j = 0 ; j < MAX - 1 ; ++j){
+
+            if(ocupados[i])
+            {
+                if(strncmp(nome_serv[j],nome_serv[j+1],3) > 0)
+                {
+                    strcpy(auxiliar,nome_serv[j]); // auxiliar fica com o valor de nome_serv
+                    strcpy(nome_serv[j],nome_serv[j+1]); // trocando a atual pela futura
+                    //strcpy(nome_serv[j+1], auxiliar);
+
+                }
+            }
+        }
+    }
+}
+
+
+
 int existe_cod(char codigo[])
 {
     int i;
@@ -228,5 +259,5 @@ int checaEntrada(char codigo[],char nome[], char siape[],char cpf[])
 }
 void cabecalho()
 {
-    printf("\nCod\tNome\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\tTipo\t\tEndereco\n\n");
+    printf("\nCod\tNome\t\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\tTipo\t\tEndereco\n\n");
 }

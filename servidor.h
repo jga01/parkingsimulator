@@ -21,5 +21,6 @@ void listarServer(int op);
 void deletarServidor(char entrada[]);
 int printar_campos(int index);
 void cabecalho();
+void ordenando();
 
 #endif //SERVIDOR_H

@@ -58,8 +58,6 @@ int main()
                 return 0;
 
             case 1: // criar servidor
-
-
                 do {
                     printf("Digite o codigo do Servidor : \n:");
                     fgets(identificador,255,stdin);
@@ -72,11 +70,6 @@ int main()
 
                 }while(checaEntrada(entrada,nome,siape,cpf));
 
-                identificador[strcspn(identificador,"\n")] = 0;
-                nome[strcspn(nome, "\n")] = 0;
-                siape[strcspn(siape,"\n")] = 0;
-                cpf[strcspn(cpf,"\n")] = 0;
-
                 printf("Digite a data de nascimento do Servidor : \n:");
                 fgets(nasci,255,stdin);
                 printf("Digite o rg do Servidor : \n:");
@@ -88,12 +81,6 @@ int main()
                 printf("Digite o endereco do Servidor : \n:"); // usar a ideia da concatenação ?
                 fflush(stdin);
                 fgets(endereco,255,stdin);
-
-                nasci[strcspn(nasci,"\n")] = 0;
-                rg[strcspn(rg, "\n")] = 0;
-                salario[strcspn(salario,"\n")] = 0;
-                tipo[strcspn(tipo,"\n")] = 0;
-                endereco[strcspn(endereco,"\n")] = 0;
 
                 criarServidor(identificador,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
@@ -124,9 +111,6 @@ int main()
                 }while(checaEntrada(entrada,nome,siape,cpf));
 
                 //codigo[strcspn(codigo,"\n")] = 0;
-                nome[strcspn(nome, "\n")] = 0;
-                siape[strcspn(siape,"\n")] = 0;
-                cpf[strcspn(cpf,"\n")] = 0;
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
                 fflush(stdin);
@@ -143,12 +127,6 @@ int main()
                 printf("Digite o NOVO endereco do Servidor : \n:"); // usar a ideia da concatenação ?
                 fflush(stdin);
                 fgets(endereco,255,stdin);
-
-                nasci[strcspn(nasci,"\n")] = 0;
-                rg[strcspn(rg, "\n")] = 0;
-                salario[strcspn(salario,"\n")] = 0;
-                tipo[strcspn(tipo,"\n")] = 0;
-                endereco[strcspn(endereco,"\n")] = 0;
 
                 // a diferença é que vai manter o mesmo codigo
                 atualizarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);

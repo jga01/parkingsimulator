@@ -14,7 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="implementada função de verificação de campos obrigatorios, porem buga o listar servidores">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="função print por servidor,tecnico, todos e por cod funcionando sem conflito.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
@@ -96,7 +96,8 @@
       <workItem from="1649501793293" duration="32324000" />
       <workItem from="1649546101932" duration="1047000" />
       <workItem from="1649675928287" duration="2457000" />
-      <workItem from="1649681281371" duration="4959000" />
+      <workItem from="1649681281371" duration="5029000" />
+      <workItem from="1649716189706" duration="3880000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -189,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649545330769</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="função print por servidor,tecnico, todos e por cod funcionando sem conflito.">
+      <created>1649686348581</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649686348581</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +227,8 @@
     <MESSAGE value="função cadastrar e listar por tipos de servidor ok" />
     <MESSAGE value="implementada função atualizar servidor, mas ainda com bug" />
     <MESSAGE value="implementada função de verificação de campos obrigatorios, porem buga o listar servidores" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementada função de verificação de campos obrigatorios, porem buga o listar servidores" />
+    <MESSAGE value="função print por servidor,tecnico, todos e por cod funcionando sem conflito." />
+    <option name="LAST_COMMIT_MESSAGE" value="função print por servidor,tecnico, todos e por cod funcionando sem conflito." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
