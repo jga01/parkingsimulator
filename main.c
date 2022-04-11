@@ -30,6 +30,7 @@ int main()
 
     while(input)
     {
+        printf("\n");
         printf("Area de Servidores: \n");
         printf("1. Registrar servidor.\n");
         printf("2. Atualizar servidor.\n");
@@ -58,33 +59,41 @@ int main()
 
             case 1: // criar servidor
 
+
                 do {
-                    printf("Digite o Codigo do Servidor : \n:");
-                    fgets(codigo, 255, stdin);
-                    printf("Digite o Nome do Servidor : \n:");
-                    fgets(nome, 255, stdin);
-                    printf("Digite o Siape do Servidor : \n:");
-                    fgets(siape, 255, stdin);
-                    printf("Digite o Cpf do Servidor : \n:");
-                    fgets(endereco, 255, stdin);
+                    printf("Digite o codigo do Servidor : \n:");
+                    fgets(identificador,255,stdin);
+                    printf("Digite o nome do Servidor : \n:");
+                    fgets(nome,255,stdin);
+                    printf("Digite o siape do Servidor : \n:");
+                    fgets(siape,255,stdin);
+                    printf("Digite o cpf do Servidor : \n:");
+                    fgets(cpf,255,stdin);
 
-                }while(checaEntrada(codigo,nome,siape,endereco));
+                }while(checaEntrada(entrada,nome,siape,cpf));
 
+                identificador[strcspn(identificador,"\n")] = 0;
                 nome[strcspn(nome, "\n")] = 0;
                 siape[strcspn(siape,"\n")] = 0;
                 cpf[strcspn(cpf,"\n")] = 0;
 
                 printf("Digite a data de nascimento do Servidor : \n:");
-                scanf("%s",&nasci);
-                printf("Digite o Rg do Servidor : \n:");
-                scanf("%s",&rg);
+                fgets(nasci,255,stdin);
+                printf("Digite o rg do Servidor : \n:");
+                fgets(rg,255,stdin);
                 printf("Digite o salario do servidor : \n:");
-                scanf("%s",&salario);
+                fgets(salario,255,stdin);
                 printf("Digite a categoria do Servidor : \nProfessor ou Tecnico\n:");
-                scanf("%s",&tipo);
+                fgets(tipo,255,stdin);
                 printf("Digite o endereco do Servidor : \n:"); // usar a ideia da concatenação ?
                 fflush(stdin);
                 fgets(endereco,255,stdin);
+
+                nasci[strcspn(nasci,"\n")] = 0;
+                rg[strcspn(rg, "\n")] = 0;
+                salario[strcspn(salario,"\n")] = 0;
+                tipo[strcspn(tipo,"\n")] = 0;
+                endereco[strcspn(endereco,"\n")] = 0;
 
                 criarServidor(identificador,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
@@ -94,38 +103,52 @@ int main()
                 printf("Digite o COD do servidor");
                 scanf("%s",&entrada);
 
-
                 while(!existe_cod(entrada))
                 {
                     printf("Esse cod não faz referencia a nenhum servidor\n");
                     printf("Digite um cod valido\n:");
                     scanf("%s",&entrada);
                 }
+
                 do {
+                    fflush(stdin);
                     printf("Digite o NOVO Nome do Servidor : \n:");
                     fgets(nome,255,stdin);
                     printf("Digite o NOVO Siape do Servidor : \n:");
+                    fflush(stdin);
                     fgets(siape,255,stdin);
                     printf("Digite o NOVO Cpf do Servidor : \n:");
+                    fflush(stdin);
                     fgets(cpf,255,stdin);
 
                 }while(checaEntrada(entrada,nome,siape,cpf));
 
+                //codigo[strcspn(codigo,"\n")] = 0;
                 nome[strcspn(nome, "\n")] = 0;
                 siape[strcspn(siape,"\n")] = 0;
                 cpf[strcspn(cpf,"\n")] = 0;
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
-                scanf("%s",&nasci);
+                fflush(stdin);
+                fgets(nasci,255,stdin);
                 printf("Digite o NOVO Rg do Servidor : \n:");
-                scanf("%s",&rg);
+                fflush(stdin);
+                fgets(rg,255,stdin);
                 printf("Digite o NOVO salario do servidor : \n:");
-                scanf("%s",&salario);
+                fflush(stdin);
+                fgets(salario,255,stdin);
                 printf("Digite a NOVA categoria do Servidor : \nProfessor ou Tecnico\n:");
-                scanf("%s",&tipo);
+                fflush(stdin);
+                fgets(tipo,255,stdin);
                 printf("Digite o NOVO endereco do Servidor : \n:"); // usar a ideia da concatenação ?
                 fflush(stdin);
                 fgets(endereco,255,stdin);
+
+                nasci[strcspn(nasci,"\n")] = 0;
+                rg[strcspn(rg, "\n")] = 0;
+                salario[strcspn(salario,"\n")] = 0;
+                tipo[strcspn(tipo,"\n")] = 0;
+                endereco[strcspn(endereco,"\n")] = 0;
 
                 // a diferença é que vai manter o mesmo codigo
                 atualizarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);

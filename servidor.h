@@ -18,7 +18,8 @@ extern char tipo_serv[MAX][255];
 void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char nasci[],char rg[],char salario[],char tipo[],char endereco[]);
 void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf[255],char nasci[255],char rg[255],char salario[255],char tipo[255],char endereco[255]); // entrada normal
 void listarServer(int op);
-void deletarServidor();
+void deletarServidor(char entrada[]);
 int printar_campos(int index);
+void cabecalho();
 
 #endif //SERVIDOR_H
