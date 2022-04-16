@@ -194,9 +194,9 @@ int printar_campos(int index) {
 
         if (ocupados[i]) {
 
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[index], nome_serv[index], siape_serv[index],
-                   cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
-                   ende_serv[index]);
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[ordenador[i]], nome_serv[ordenador[i]], siape_serv[ordenador[i]],
+                   cpf_serv[ordenador[i]], nasci_serv[ordenador[i]], rg_serv[ordenador[i]], salario_serv[ordenador[i]], tipo_serv[ordenador[i]],
+                   ende_serv[ordenador[i]]);
         }
     }
 
@@ -204,23 +204,28 @@ int printar_campos(int index) {
 }
 void ordenando()
 {
-    int i,j;
+    int i,j,aux;
     // strcmp se retornar maior que 0 == o primeiro valor é maior que o segundo
     // strcmp se retornar menor que 0 == o primeiro valor é menor que o segundo
     // strcmp se retornar igual a 0 == mesmo tamanho
 
-    for( i = 1; i < MAX ; ++i)
+    for( i = 0; i < MAX - 1 ; ++i)
     {
-        for(j = 0 ; j < MAX - 1 ; ++j){
+        for(j = 0 ; j < MAX - 1 ; ++j)
+        {
+            if(strcmp(nome_serv[j], nome_serv[j+1]) > 0)
+            {
+                 // método bubble sort
+                 ordenador[j] = j+1;
+                 ordenador[j+1] = j;
 
-            if(ocupados[i])
-            {//             pedro          john
-                if(strcmp(nome_serv[j], nome_serv[j + 1]) < 0)
-                {
-                    ordenador[i] = j+1; // indice dee john vai para j
-                    ordenador[i+1] = j;// indice de pedro vai para prox casa no vetor
-
-                }
+                /* nome_serv[i] é maior que nome_sev[j] ? se for ::
+                 *
+                 * auxiliar = numero[i];
+                 * numero[i] = numeros[i+1];
+                 * numeros[i+1] = aux;
+                 *
+                 * */
             }
         }
     }
