@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include "servidor.h"
 #include "veiculo.h"
 
@@ -11,25 +10,27 @@ char nome_serv[MAX][255]; // obrigatoria
 char siape_serv[MAX][255];  // obrigatoria
 char cpf_serv[MAX][255]; // obrigatoria
 
+int ordenador[255];
 char nasci_serv[MAX][255];
 char ende_serv[MAX][255];
 char rg_serv[MAX][255];
 char salario_serv[MAX][255];
 char tipo_serv[MAX][255];
 
-void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char nasci[],char rg[],char salario[],char tipo[],char endereco[])
+void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci[],char rg[],char salario[],char tipo[],char endereco[])
 {
     int i,index =0;
 
     for( i = 0 ;  i < MAX ; i++) // Verificando indices livres
     {
-        if (!(ocupados[i])) {
+        if (!(ocupados[i]))
+        {
             index = i;
             break;
         }
     }
 
-    identificador[strcspn(identificador,"\n")] = 0;
+    entrada[strcspn(entrada,"\n")] = 0;
     nome[strcspn(nome, "\n")] = 0;
     siape[strcspn(siape,"\n")] = 0;
     cpf[strcspn(cpf,"\n")] = 0;
@@ -39,8 +40,7 @@ void criarServidor(char identificador[],char nome[],char siape[],char cpf[],char
     tipo[strcspn(tipo,"\n")] = 0;
     endereco[strcspn(endereco,"\n")] = 0;
 
-    strcpy(cod[index], identificador);
-    //strcpy(cod[index], identificador);
+    strcpy(cod[index], entrada);
     strcpy(nome_serv[index], nome);
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
@@ -67,6 +67,7 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
     }
     // entrada de valores nos vetores globais.
     //strcpy(cod[index], identificador);
+
     nome[strcspn(nome, "\n")] = 0;
     siape[strcspn(siape,"\n")] = 0;
     cpf[strcspn(cpf,"\n")] = 0;
@@ -91,15 +92,18 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
 void deletarServidor(char entrada[])
 {
     int i;
-    char input[255];
+
+    entrada[strcspn(entrada,"\n")] = 0;
+    // entrada == cod do servidor
 
     for(i = 0 ; i<MAX ; ++i)
     {
-        itoa(ocupados[i],input,10);
-        if(!strcmp(input,entrada))
+        if(!strcmp(cod[i],entrada))
+        {
             ocupados[i] = 0;
+            printf("\nDELETADO\n");
+        }
     }
-
 }
 
 void listarServer(int op)
@@ -117,7 +121,8 @@ void listarServer(int op)
 
             for (i = 0; i < MAX; i++)
             {
-                if (!strncmp(tipo_serv[i], "tecnicos", 5))
+
+                if (!strncmp(tipo_serv[i], "tecnico", 5))
                 {
                     printar_campos(i);
                 }
@@ -141,11 +146,11 @@ void listarServer(int op)
             cabecalho();
             for(i= 0 ; i < MAX ; ++i)
             {
-                if(ocupados[i]){
-                printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[i], nome_serv[i], siape_serv[i],
-                       cpf_serv[i], nasci_serv[i], rg_serv[i], salario_serv[i], tipo_serv[i],
-                       ende_serv[i]);
+                if(ocupados[i])
+                {
+                    printar_campos(i);
                 }
+
             }break;
 
 
@@ -155,7 +160,6 @@ void listarServer(int op)
 
                 printf("Digite o cod do servidor : \n");
                 scanf("%s", &codigoServidorInformado);
-
 
             }while(checarCodigos(codigoServidorInformado));
 
@@ -183,15 +187,14 @@ void listarServer(int op)
 
 int printar_campos(int index) {
 
-    // imprimir o campo nome em ordem alfabetica
-    // tenho que pegar o nome e julgar com base nos proximos valores
-    // vou supor que a primeira palavra é a menor valor ordem alfabetica
-    ordenando();
     int i;
+    ordenando();
+
     for(i = 0 ; i < MAX ; ++i) {
 
         if (ocupados[i]) {
-            printf("%s\t\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n", cod[index], nome_serv[index], siape_serv[index],
+
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[index], nome_serv[index], siape_serv[index],
                    cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
                    ende_serv[index]);
         }
@@ -202,22 +205,20 @@ int printar_campos(int index) {
 void ordenando()
 {
     int i,j;
-    char auxiliar[255];
-    // ideia da suposição falhou
-    // ideia da sequencia de fibonnaci
-    // o strcpy
+    // strcmp se retornar maior que 0 == o primeiro valor é maior que o segundo
+    // strcmp se retornar menor que 0 == o primeiro valor é menor que o segundo
+    // strcmp se retornar igual a 0 == mesmo tamanho
 
     for( i = 1; i < MAX ; ++i)
     {
         for(j = 0 ; j < MAX - 1 ; ++j){
 
             if(ocupados[i])
-            {
-                if(strncmp(nome_serv[j],nome_serv[j+1],3) > 0)
+            {//             pedro          john
+                if(strcmp(nome_serv[j], nome_serv[j + 1]) < 0)
                 {
-                    strcpy(auxiliar,nome_serv[j]); // auxiliar fica com o valor de nome_serv
-                    strcpy(nome_serv[j],nome_serv[j+1]); // trocando a atual pela futura
-                    //strcpy(nome_serv[j+1], auxiliar);
+                    ordenador[i] = j+1; // indice dee john vai para j
+                    ordenador[i+1] = j;// indice de pedro vai para prox casa no vetor
 
                 }
             }
@@ -225,39 +226,64 @@ void ordenando()
     }
 }
 
-
-
 int existe_cod(char codigo[])
 {
     int i;
 
-    if(!strcmp(codigo,"0")) return 0 ;
-
     for( i = 0 ; i < MAX ; ++i)
     {
-        if(!strcmp(codigo,cod[i])) return 1;
+        if(!strcmp(cod[i],codigo)) return 0;
     }
-    return 0;
+    return 1;
 }
 
-int checaEntrada(char codigo[],char nome[], char siape[],char cpf[])
+int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[] )
 {
-    int input1,input2,input3,input4;
+    int input1,input2,input3,input4,i;
+    int teste;
 
-    input1 = strcmp(codigo,"\n");
-    input2 = strcmp(siape,"\n");
-    input3 = strcmp(cpf,"\n");
+    codigo[strcspn(codigo,"\n")] = 0;
+    nome[strcspn(nome, "\n")] = 0;
+    siape[strcspn(siape,"\n")] = 0;
+    cpf[strcspn(cpf,"\n")] = 0;
+    iden[strcspn(iden,"\n")] = 0;
+
+    input1 = strcmp(codigo,"\n"); // nao pode repetir
+    input2 = strcmp(siape,"\n"); // nao pode repetir
+    input3 = strcmp(cpf,"\n"); // nao pode repetir
     input4 = strcmp(nome,"\n");
+
+    for (i = 0; i < MAX; ++i) {
+        // se o teste for 1 é pq ao menos um dos valores é repetido
+        //teste = (strcmp(cod[i],codigo) && strcmp(siape_serv[i],siape) && strcmp(cpf_serv[i],cpf));
+
+        if(!strcmp(iden,"1"))
+        {
+            // aqui ele trata o cod
+            teste = ( (!strcmp(cod[i], codigo) || !strcmp(siape_serv[i], siape)) || !strcmp(cpf_serv[i], cpf) );
+        }
+        else{
+            // aqui ele nao trata o cod
+            teste = ( !strcmp(siape_serv[i], siape) || !strcmp(cpf_serv[i], cpf) );
+        }
+
+        if (teste) // se pelo menos algum for repetido ele retorna 1 pedindo para reescrever
+        {
+                printf("\nAlguns dos dados estao repetidos\nTente Novamente\n\n");
+                return 1;
+        }
+    }
 
     // se algum for igual a um enter == "\n" ele vai ter valor zero e tornar verdadeira a condição
     if(!(input1 && input2 && input3 && input4)) {
 
-        printf("Digite Valores validos para entrada\n");
+        printf("\nDigite Valores validos para entrada\nNao digite espacos\n\n");
         return 1;
 
     }else return 0;
 }
+
 void cabecalho()
 {
-    printf("\nCod\tNome\t\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\tTipo\t\tEndereco\n\n");
+    printf("\nCod\tNome\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\t\tTipo\t\tEndereco\n\n");
 }
