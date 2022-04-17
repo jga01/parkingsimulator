@@ -14,10 +14,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Verificando possiveis bugs, implementando verificador de duplicidade, melhorando a ideia de ordenação">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Tentativa de ordenação por indice, sem sucesso.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/servidor.h" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ClangdSettings">
+    <option name="clangTidyViaClangd" value="false" />
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
@@ -71,6 +73,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="parkingsimulator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="parkingsimulator" TARGET_NAME="parkingsimulator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="parkingsimulator" RUN_TARGET_NAME="parkingsimulator">
@@ -96,7 +99,8 @@
       <workItem from="1649675928287" duration="2457000" />
       <workItem from="1649681281371" duration="5029000" />
       <workItem from="1649716189706" duration="3953000" />
-      <workItem from="1650111785094" duration="25601000" />
+      <workItem from="1650111785094" duration="25753000" />
+      <workItem from="1650196152848" duration="30837000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -210,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650134372802</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Tentativa de ordenação por indice, sem sucesso.">
+      <created>1650148476040</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1650148476040</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,19 +254,15 @@
     <MESSAGE value="função print por servidor,tecnico, todos e por cod funcionando sem conflito." />
     <MESSAGE value="tentativa de ordenação, movendo os strcpn para dentro da função" />
     <MESSAGE value="Verificando possiveis bugs, implementando verificador de duplicidade, melhorando a ideia de ordenação" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verificando possiveis bugs, implementando verificador de duplicidade, melhorando a ideia de ordenação" />
+    <MESSAGE value="Tentativa de ordenação por indice, sem sucesso." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tentativa de ordenação por indice, sem sucesso." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/servidor.c</url>
-          <line>190</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/servidor.c</url>
-          <line>204</line>
+          <line>235</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -264,9 +271,14 @@
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>85</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/servidor.c</url>
+          <line>260</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/servidor.c</url>
+          <line>271</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

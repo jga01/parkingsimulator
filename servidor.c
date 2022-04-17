@@ -10,7 +10,10 @@ char nome_serv[MAX][255]; // obrigatoria
 char siape_serv[MAX][255];  // obrigatoria
 char cpf_serv[MAX][255]; // obrigatoria
 
-int ordenador[255];
+int ordenador_geral[255]; // print para todos os campos
+int ordenador_professor[255]; // print para professor
+int ordenador_tecnico[255]; // print para tecnicos
+
 char nasci_serv[MAX][255];
 char ende_serv[MAX][255];
 char rg_serv[MAX][255];
@@ -110,49 +113,35 @@ void listarServer(int op)
 {
     // criar os panoramas pedidos no projeto do professor
     // ou printa todos ou um caso específico
-    int i;
+    int i,opcao;
     char codigoServidorInformado[255];
+
 
     switch (op) {
 
         case 1: // printar tecnicos
+                // opcao == 1
 
             cabecalho();
-
-            for (i = 0; i < MAX; i++)
-            {
-
-                if (!strncmp(tipo_serv[i], "tecnico", 5))
-                {
-                    printar_campos(i);
-                }
-            }
+            opcao = 1;
+            ordenando(opcao);
             break;
 
         case 2: // printar professor
+                // opcao == 2
 
             cabecalho();
+            opcao = 2;
+            ordenando(opcao);
+            break;
 
-            for(i = 0; i< MAX; i++)
-            {
-                if(!strncmp(tipo_serv[i],"professor",5))
-                {
-                    printar_campos(i);
-                }
-            }break;
-
-        case 3: // printar todos
+        case 3: // printar todos // printar em ordem
+                // opcao == 3;
 
             cabecalho();
-            for(i= 0 ; i < MAX ; ++i)
-            {
-                if(ocupados[i])
-                {
-                    printar_campos(i);
-                }
-
-            }break;
-
+            opcao = 3;
+            ordenando(opcao);
+            break;
 
         case 4: // printar por cod
 
@@ -173,7 +162,7 @@ void listarServer(int op)
                     {
                         if(!strcmp(codigoServidorInformado,cod[i]))
                         {
-                            printar_campos(i);
+                            print_cod(i);
                         }
                     }
             }break;
@@ -184,53 +173,173 @@ void listarServer(int op)
     }
 }
 
+void print_cod(int index)
+{
+    printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[index], nome_serv[index], siape_serv[index],
+                   cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
+                   ende_serv[index]);
+}
 
-int printar_campos(int index) {
-
+void printar_all(int vezes)
+{
     int i;
-    ordenando();
 
-    for(i = 0 ; i < MAX ; ++i) {
-
-        if (ocupados[i]) {
-
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[ordenador[i]], nome_serv[ordenador[i]], siape_serv[ordenador[i]],
-                   cpf_serv[ordenador[i]], nasci_serv[ordenador[i]], rg_serv[ordenador[i]], salario_serv[ordenador[i]], tipo_serv[ordenador[i]],
-                   ende_serv[ordenador[i]]);
+    for(i = 0 ; i < vezes; ++i)
+    {
+        if(ocupados[i])
+        {
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
+                   cod[ordenador_geral[i]], nome_serv[ordenador_geral[i]],
+                   siape_serv[ordenador_geral[i]],
+                   cpf_serv[ordenador_geral[i]], nasci_serv[ordenador_geral[i]],
+                   rg_serv[ordenador_geral[i]], salario_serv[ordenador_geral[i]],
+                   tipo_serv[ordenador_geral[i]],ende_serv[ordenador_geral[i]]);
         }
     }
-
-    return 0;
 }
-void ordenando()
+
+void printar_tec(int vezes)
 {
-    int i,j,aux;
-    // strcmp se retornar maior que 0 == o primeiro valor é maior que o segundo
-    // strcmp se retornar menor que 0 == o primeiro valor é menor que o segundo
-    // strcmp se retornar igual a 0 == mesmo tamanho
+    int i;
 
-    for( i = 0; i < MAX - 1 ; ++i)
+    for(i = 0 ; i < vezes; ++i)
     {
-        for(j = 0 ; j < MAX - 1 ; ++j)
+        if(ocupados[i])
         {
-            if(strcmp(nome_serv[j], nome_serv[j+1]) > 0)
-            {
-                 // método bubble sort
-                 ordenador[j] = j+1;
-                 ordenador[j+1] = j;
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
+                   cod[ordenador_tecnico[i]], nome_serv[ordenador_tecnico[i]],
+                   siape_serv[ordenador_tecnico[i]],
+                   cpf_serv[ordenador_tecnico[i]], nasci_serv[ordenador_tecnico[i]],
+                   rg_serv[ordenador_tecnico[i]], salario_serv[ordenador_tecnico[i]],
+                   tipo_serv[ordenador_tecnico[i]],ende_serv[ordenador_tecnico[i]]);
+        }
+    }
+}
 
-                /* nome_serv[i] é maior que nome_sev[j] ? se for ::
-                 *
-                 * auxiliar = numero[i];
-                 * numero[i] = numeros[i+1];
-                 * numeros[i+1] = aux;
-                 *
-                 * */
+void printar_prof(int vezes)
+{
+    int i;
+    for(i = 0 ; i < vezes; ++i)
+    {
+        if(ocupados[i])
+        {
+            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
+                   cod[ordenador_professor[i]], nome_serv[ordenador_professor[i]],
+                   siape_serv[ordenador_professor[i]],
+                   cpf_serv[ordenador_professor[i]], nasci_serv[ordenador_professor[i]],
+                   rg_serv[ordenador_professor[i]], salario_serv[ordenador_professor[i]],
+                   tipo_serv[ordenador_professor[i]],ende_serv[ordenador_professor[i]]);
+        }
+    }
+}
+
+void ordenando(int opcao)
+{
+    /*
+     * Essa função vai odenar os valores de acordo com uma verificação por tamanho
+     *
+     * primeiro - ela deve armazenar todos os valores de nome_serv A em outro vetor B
+     * segundo - ela deve ordenar esse outro vetor
+     * terceiro - ela deve fazer outro vetor C armazenar os indices por comparação (strcmp)
+     * quarto - ela deve passar os vetor de indices C no escopo global
+     *
+     * strcmp se retornar maior que 0 == o primeiro valor é maior que o segundo
+     * // strcmp se retornar menor que 0 == o primeiro valor é menor que o segundo
+     * // strcmp se retornar igual a 0 == mesmo tamanho
+     *
+     * ela tbm deve levar em conta em que caso esta sendo executada
+     *
+     * printar todos os tecnicos em ordem
+     * printar todos os professores em ordem
+     * printar todos em ordem
+     *
+     * */
+
+    int i,j,quantia = 0;
+    char copy_nome[MAX][255], aux[255];
+
+    for( i = 0 ; i < MAX ; ++i) // setando valores como zero para nao printar por cima
+    {
+        if(ocupados[i])
+        {
+            strcpy(copy_nome[i],nome_serv[i]);
+
+        }else strcpy(copy_nome[i],"~");
+    }
+
+    // ordenando o vetor copy_nome com o método bubble sort
+
+    for( i = 0 ; i < MAX; ++i)
+    {
+        for( j = 0 ; j < MAX - 1 ; ++j)
+        {
+            if(  strcmp( copy_nome[j], copy_nome[j+1]) > 0 ) // troca o pedro pelo \0 ??
+            {
+                strcpy(aux,copy_nome[j]);
+                strcpy(copy_nome[j],copy_nome[j+1]);
+                strcpy(copy_nome[j+1],aux);
             }
         }
     }
-}
 
+    switch (opcao) {
+
+        case 1: // tecnicos
+
+            for(i = 0 ; i < MAX ; ++i)
+            {
+                for(j = 0 ; j < MAX ; ++j)
+                {
+                    if( (!strcmp(nome_serv[j],copy_nome[i])) && (!strcmp("tecnico",tipo_serv[j])) )
+                    {
+                        ordenador_tecnico[i] = j;
+                        quantia++;
+                    }
+
+                }
+            }
+            printar_tec(quantia);
+
+            break;
+
+        case 2: // professores
+
+            for(i = 0 ; i < MAX ; ++i)
+            {
+                for(j = 0 ; j < MAX ; ++j)
+                {
+                    if( ( !strcmp(nome_serv[j],copy_nome[i]) ) && ( !strcmp("professor",tipo_serv[j]) ) )
+                    {
+                        ordenador_professor[i] = j;
+                        quantia++;
+                    }
+                }
+            }
+            printar_prof(quantia);
+            break;
+
+        case 3: // ordenando todos os valores
+
+            for(i = 0 ; i < MAX ; ++i)
+            {
+                for(j = 0 ; j < MAX ; ++j)
+                {
+                    if(!strcmp(nome_serv[j],copy_nome[i]))
+                    {
+                        ordenador_geral[i] = j;
+                        quantia++;
+                    }
+
+                }
+            }
+            printar_all(quantia);
+            break;
+
+        default:
+            // Erro interpretado, logo não vai rodar nada
+            break;
+    }
+}
 int existe_cod(char codigo[])
 {
     int i;
