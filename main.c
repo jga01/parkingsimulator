@@ -3,15 +3,12 @@
 //
 
 #include <stdio.h>
-#include "servidor.c"
+#include <string.h>
 #include "servidor.h"
 #include "veiculo.h"
-#include "veiculo.c"
-
-void limparBuffer(char cod[]);
 
 int ind,op;
-char codigo[255], modelo [255], descricao[255], placa[255], marca[255];
+char dono[255], codigo[255], modelo [255], descricao[255], placa[255], marca[255];
 char iden[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],salario[255],tipo[255],endereco[255];
 
 
@@ -155,38 +152,47 @@ int main()
                 listarServer(op);
 
                 break;
-            case 5:
-                printf("Insira o codigo do veiculo: ");
-                fgets(codigo, 255, stdin);
+            case 5: // registrar veiculo
+                do {
+                    printf("Insira o codigo do servidor proprietario: ");
+                    fgets(dono, sizeof(dono), stdin);
+                    dono[strcspn(dono, "\n")] = 0;
+                    if(!checarDono(dono))
+                        printf("Nenhum servidor com esse codigo, tente novamente.\n");
+                } while(!checarDono(dono));
 
-                codigo[strcspn(codigo, "\n")] = 0;
-
-                while(checarCodigos(codigo))
-                {
-                    printf("Esse codigo ja existe, insira outro: ");
-                    fgets(codigo, 255, stdin);
-                    codigo[strcspn(codigo, "\n")] = 0;
-                }
+                do {
+                    printf("Insira o codigo do veiculo: ");
+                    fgets(codigo, sizeof(codigo), stdin);
+                    dono[strcspn(codigo, "\n")] = 0;
+                    if(checarCodigos(codigo))
+                        printf("Codigo em uso, tente novamente.\n");
+                } while(checarCodigos(codigo));
 
                 printf("Insira o modelo: ");
-                fgets(modelo, 255, stdin);
-                printf("Insira a descricao: ");
-                fgets(descricao, 255, stdin);
+                fgets(modelo, sizeof(modelo), stdin);
+
+                do {
+                    printf("Insira a descricao: ");
+                    fgets(descricao, sizeof(descricao), stdin);
+                    descricao[strcspn(descricao, "\n")] = 0;
+                    if(checarDesc(descricao))
+                        printf("Descricao em uso, tente novamente.\n");
+                } while(checarDesc(descricao));
+
                 printf("Insira a placa: ");
-                fgets(placa, 255, stdin);
+                fgets(placa, sizeof(placa), stdin);
                 printf("Insira a marca: ");
-                fgets(marca, 255, stdin);
+                fgets(marca, sizeof(marca), stdin);
 
-                //codigo[strcspn(codigo, "\n")] = 0;
-                modelo[strcspn(modelo, "\n")] = 0;
-                descricao[strcspn(descricao, "\n")] = 0;
-                placa[strcspn(placa, "\n")] = 0;
-                marca[strcspn(marca, "\n")] = 0;
+                modelo[strcspn(modelo, "\n")] = '\0';
+                placa[strcspn(placa, "\n")] = '\0';
+                marca[strcspn(marca, "\n")] = '\0';
 
-                inserirVeiculo(codigo, modelo, descricao, placa, marca);
+                inserirVeiculo(dono, codigo, modelo, descricao, placa, marca);
                 printf("\n");
                 break;
-            case 6:
+            case 6: //atualizar veiculo existente
                 printf("Insira o indice: ");
                 scanf("%d%*c", &ind);
                 printf("Insira o novo codigo: ");
@@ -211,7 +217,7 @@ int main()
                 printf("\n");
 
                 break;
-            case 7:
+            case 7: //deletar veiculo
                 printf("Insira o indice: ");
                 scanf("\n%d", &ind);
 
@@ -219,12 +225,10 @@ int main()
 
                 printf("\n");
                 break;
-            case 8:
+            case 8: //listar veiculos
                 if (codigos[0][0])
                 {
                     listarVeiculo();
-
-                    printf("\n");
                     break;
                 }
                 else
@@ -238,10 +242,5 @@ int main()
     return 0;
 }
 
-/*void limparBuffer(char cod[])
-{
-    cod[strcspn(cod, "\n")] = 0;
-    strcpy(codigo, cod);
-}*/
 
 
