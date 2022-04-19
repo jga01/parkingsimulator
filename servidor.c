@@ -22,13 +22,15 @@ char tipo_serv[MAX][255];
 
 void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci[],char rg[],char salario[],char tipo[],char endereco[])
 {
-    int i,index =0;
+    int i,index = 0;
 
     for( i = 0 ;  i < MAX ; i++) // Verificando indices livres
     {
-        if (!(ocupados[i]))
+        if ( !(ocupados[i]))
         {
-            index = i;
+            if( i == 0 ) continue;
+
+            index = i; // não quero cadastrar no indice 0
             break;
         }
     }
@@ -180,13 +182,13 @@ void print_cod(int index)
                    ende_serv[index]);
 }
 
-void printar_all(int vezes)
+void printar_all(vezes)
 {
     int i;
 
     for(i = 0 ; i < vezes; ++i)
     {
-        if(ocupados[i])
+        if( ordenador_geral[i] )
         {
             printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
                    cod[ordenador_geral[i]], nome_serv[ordenador_geral[i]],
@@ -198,13 +200,13 @@ void printar_all(int vezes)
     }
 }
 
-void printar_tec(int vezes)
+void printar_tec()
 {
     int i;
 
-    for(i = 0 ; i < vezes; ++i)
+    for(i = 0 ; i < MAX; ++i)
     {
-        if(ocupados[i])
+        if( ordenador_tecnico[i] )
         {
             printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
                    cod[ordenador_tecnico[i]], nome_serv[ordenador_tecnico[i]],
@@ -216,12 +218,12 @@ void printar_tec(int vezes)
     }
 }
 
-void printar_prof(int vezes)
+void printar_prof()
 {
     int i;
-    for(i = 0 ; i < vezes; ++i)
+    for(i = 0 ; i < MAX; ++i)
     {
-        if(ocupados[i])
+        if( ordenador_professor[i] )
         {
             printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
                    cod[ordenador_professor[i]], nome_serv[ordenador_professor[i]],
@@ -298,13 +300,12 @@ void ordenando(int opcao)
                         {
                             strcpy(copy_nome[i],"XXXXX");
                             ordenador_tecnico[i] = j;
-                            quantia++;
                         }
                     }
 
                 }
             }
-            printar_tec(quantia);
+            printar_tec();
 
             break;
 
@@ -320,12 +321,11 @@ void ordenando(int opcao)
                         {
                             strcpy(copy_nome[i],"XXXXX");
                             ordenador_professor[i] = j;
-                            quantia++;
                         }
                     }
                 }
             }
-            printar_prof(quantia);
+            printar_prof();
             break;
 
         case 3: // ordenando todos os valores

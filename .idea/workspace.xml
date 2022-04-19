@@ -14,7 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Esboço de ordenação implementado, bugs no print dos professore e no dos tec">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
@@ -72,7 +72,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RunManager">
@@ -101,7 +101,8 @@
       <workItem from="1649716189706" duration="3953000" />
       <workItem from="1650111785094" duration="25753000" />
       <workItem from="1650196152848" duration="31142000" />
-      <workItem from="1650281744890" duration="8590000" />
+      <workItem from="1650281744890" duration="9071000" />
+      <workItem from="1650364490511" duration="6985000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -229,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650233417896</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores">
+      <created>1650327708349</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650327708349</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,14 +272,15 @@
     <MESSAGE value="Verificando possiveis bugs, implementando verificador de duplicidade, melhorando a ideia de ordenação" />
     <MESSAGE value="Tentativa de ordenação por indice, sem sucesso." />
     <MESSAGE value="Esboço de ordenação implementado, bugs no print dos professore e no dos tec" />
-    <option name="LAST_COMMIT_MESSAGE" value="Esboço de ordenação implementado, bugs no print dos professore e no dos tec" />
+    <MESSAGE value="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores" />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/servidor.c</url>
-          <line>235</line>
+          <line>237</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
