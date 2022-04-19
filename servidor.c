@@ -113,7 +113,7 @@ void listarServer(int op)
 {
     // criar os panoramas pedidos no projeto do professor
     // ou printa todos ou um caso específico
-    int i,opcao;
+    int i,opcao = 0;
     char codigoServidorInformado[255];
 
 
@@ -258,11 +258,13 @@ void ordenando(int opcao)
     int i,j,quantia = 0;
     char copy_nome[MAX][255], aux[255];
 
+    iniciar_ordenados();
+
     for( i = 0 ; i < MAX ; ++i) // setando valores como zero para nao printar por cima
     {
         if(ocupados[i])
         {
-            strcpy(copy_nome[i],nome_serv[i]);
+            strcpy(copy_nome[i],nome_serv[i]); // inserir um low case aqui
 
         }else strcpy(copy_nome[i],"~");
     }
@@ -271,7 +273,7 @@ void ordenando(int opcao)
 
     for( i = 0 ; i < MAX; ++i)
     {
-        for( j = 0 ; j < MAX - 1 ; ++j)
+        for( j = 0 ; j < (MAX - i - 1) ; ++j)
         {
             if(  strcmp( copy_nome[j], copy_nome[j+1]) > 0 ) // troca o pedro pelo \0 ??
             {
@@ -286,14 +288,18 @@ void ordenando(int opcao)
 
         case 1: // tecnicos
 
-            for(i = 0 ; i < MAX ; ++i)
+            for( i = 0 ; i < MAX ; ++i)
             {
-                for(j = 0 ; j < MAX ; ++j)
+                for( j = 0 ; j < (MAX - i - 1) ; ++j)
                 {
-                    if( (!strcmp(nome_serv[j],copy_nome[i])) && (!strcmp("tecnico",tipo_serv[j])) )
+                    if( !strcmp(nome_serv[j],copy_nome[i]))
                     {
-                        ordenador_tecnico[i] = j;
-                        quantia++;
+                        if(!strcmp("tecnico",tipo_serv[j]))
+                        {
+                            strcpy(copy_nome[i],"XXXXX");
+                            ordenador_tecnico[i] = j;
+                            quantia++;
+                        }
                     }
 
                 }
@@ -304,14 +310,18 @@ void ordenando(int opcao)
 
         case 2: // professores
 
-            for(i = 0 ; i < MAX ; ++i)
+            for( i = 0 ; i < MAX ; ++i)
             {
-                for(j = 0 ; j < MAX ; ++j)
+                for( j = 0 ; j < (MAX - i - 1) ; ++j)
                 {
-                    if( ( !strcmp(nome_serv[j],copy_nome[i]) ) && ( !strcmp("professor",tipo_serv[j]) ) )
+                    if( !strcmp(nome_serv[j],copy_nome[i]) )
                     {
-                        ordenador_professor[i] = j;
-                        quantia++;
+                        if( !strcmp("professor",tipo_serv[j]) )
+                        {
+                            strcpy(copy_nome[i],"XXXXX");
+                            ordenador_professor[i] = j;
+                            quantia++;
+                        }
                     }
                 }
             }
@@ -322,7 +332,7 @@ void ordenando(int opcao)
 
             for(i = 0 ; i < MAX ; ++i)
             {
-                for(j = 0 ; j < MAX ; ++j)
+                for(j = 0 ; j < (MAX - i - 1) ; ++j)
                 {
                     if(!strcmp(nome_serv[j],copy_nome[i]))
                     {
@@ -340,6 +350,7 @@ void ordenando(int opcao)
             break;
     }
 }
+
 int existe_cod(char codigo[])
 {
     int i;
@@ -400,4 +411,15 @@ int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[]
 void cabecalho()
 {
     printf("\nCod\tNome\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\t\tTipo\t\tEndereco\n\n");
+}
+
+void iniciar_ordenados()
+{
+    int i;
+    for(i = 0 ; i < MAX ; ++i)
+    {
+        ordenador_geral[i] = 0;
+        ordenador_professor[i] = 0;
+        ordenador_tecnico[i] = 0;
+    }
 }

@@ -25,5 +25,6 @@ void printar_prof(int index);
 void printar_tec(int index);
 void cabecalho();
 void ordenando(int opcao);
+void iniciar_ordenados();
 
 #endif //SERVIDOR_H

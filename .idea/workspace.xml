@@ -14,7 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Tentativa de ordenação por indice, sem sucesso.">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Esboço de ordenação implementado, bugs no print dos professore e no dos tec">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
@@ -100,7 +100,8 @@
       <workItem from="1649681281371" duration="5029000" />
       <workItem from="1649716189706" duration="3953000" />
       <workItem from="1650111785094" duration="25753000" />
-      <workItem from="1650196152848" duration="30837000" />
+      <workItem from="1650196152848" duration="31142000" />
+      <workItem from="1650281744890" duration="8590000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -221,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650148476040</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Esboço de ordenação implementado, bugs no print dos professore e no dos tec">
+      <created>1650233417896</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650233417896</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,7 +263,8 @@
     <MESSAGE value="tentativa de ordenação, movendo os strcpn para dentro da função" />
     <MESSAGE value="Verificando possiveis bugs, implementando verificador de duplicidade, melhorando a ideia de ordenação" />
     <MESSAGE value="Tentativa de ordenação por indice, sem sucesso." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tentativa de ordenação por indice, sem sucesso." />
+    <MESSAGE value="Esboço de ordenação implementado, bugs no print dos professore e no dos tec" />
+    <option name="LAST_COMMIT_MESSAGE" value="Esboço de ordenação implementado, bugs no print dos professore e no dos tec" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,18 +279,13 @@
           <line>154</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/servidor.c</url>
-          <line>260</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/servidor.c</url>
-          <line>271</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="copy_nome" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
