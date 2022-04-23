@@ -28,9 +28,9 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
     {
         if ( !(ocupados[i]))
         {
-            if( i == 0 ) continue;
+            if( i == 0 ) continue; // não quero cadastrar no indice 0
 
-            index = i; // não quero cadastrar no indice 0
+            index = i;
             break;
         }
     }
@@ -113,16 +113,12 @@ void deletarServidor(char entrada[])
 
 void listarServer(int op)
 {
-    // criar os panoramas pedidos no projeto do professor
-    // ou printa todos ou um caso específico
     int i,opcao = 0;
     char codigoServidorInformado[255];
-
 
     switch (op) {
 
         case 1: // printar tecnicos
-                // opcao == 1
 
             cabecalho();
             opcao = 1;
@@ -130,7 +126,6 @@ void listarServer(int op)
             break;
 
         case 2: // printar professor
-                // opcao == 2
 
             cabecalho();
             opcao = 2;
@@ -138,7 +133,6 @@ void listarServer(int op)
             break;
 
         case 3: // printar todos // printar em ordem
-                // opcao == 3;
 
             cabecalho();
             opcao = 3;
@@ -237,26 +231,6 @@ void printar_prof()
 
 void ordenando(int opcao)
 {
-    /*
-     * Essa função vai odenar os valores de acordo com uma verificação por tamanho
-     *
-     * primeiro - ela deve armazenar todos os valores de nome_serv A em outro vetor B
-     * segundo - ela deve ordenar esse outro vetor
-     * terceiro - ela deve fazer outro vetor C armazenar os indices por comparação (strcmp)
-     * quarto - ela deve passar os vetor de indices C no escopo global
-     *
-     * strcmp se retornar maior que 0 == o primeiro valor é maior que o segundo
-     * // strcmp se retornar menor que 0 == o primeiro valor é menor que o segundo
-     * // strcmp se retornar igual a 0 == mesmo tamanho
-     *
-     * ela tbm deve levar em conta em que caso esta sendo executada
-     *
-     * printar todos os tecnicos em ordem
-     * printar todos os professores em ordem
-     * printar todos em ordem
-     *
-     * */
-
     int i,j,quantia = 0;
     char copy_nome[MAX][255], aux[255];
 
@@ -294,13 +268,9 @@ void ordenando(int opcao)
             {
                 for( j = 0 ; j < (MAX - i - 1) ; ++j)
                 {
-                    if( !strcmp(nome_serv[j],copy_nome[i]))
+                    if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Tecnico",tipo_serv[j]))
                     {
-                        if(!strcmp("tecnico",tipo_serv[j]))
-                        {
-                            strcpy(copy_nome[i],"XXXXX");
-                            ordenador_tecnico[i] = j;
-                        }
+                        ordenador_tecnico[i] = j;
                     }
 
                 }
@@ -315,13 +285,9 @@ void ordenando(int opcao)
             {
                 for( j = 0 ; j < (MAX - i - 1) ; ++j)
                 {
-                    if( !strcmp(nome_serv[j],copy_nome[i]) )
+                    if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Professor",tipo_serv[j]))
                     {
-                        if( !strcmp("professor",tipo_serv[j]) )
-                        {
-                            strcpy(copy_nome[i],"XXXXX");
-                            ordenador_professor[i] = j;
-                        }
+                        ordenador_professor[i] = j;
                     }
                 }
             }
@@ -379,8 +345,6 @@ int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[]
     input4 = strcmp(nome,"\n");
 
     for (i = 0; i < MAX; ++i) {
-        // se o teste for 1 é pq ao menos um dos valores é repetido
-        //teste = (strcmp(cod[i],codigo) && strcmp(siape_serv[i],siape) && strcmp(cpf_serv[i],cpf));
 
         if(!strcmp(iden,"1"))
         {
@@ -422,4 +386,27 @@ void iniciar_ordenados()
         ordenador_professor[i] = 0;
         ordenador_tecnico[i] = 0;
     }
+}
+
+int  type_serv()
+{
+    int opcao;
+
+    do {
+        printf("Digite a categoria do Servidor : \n1-Professor\n2-Tecnico\n:");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            return 1; // professor
+
+        } else if (opcao == 2) {
+            return 2; // Tecnico
+
+        } else {
+            printf("\nDigite um valor valido para o servidor\n");
+        }
+
+    }while( opcao != 1 && opcao !=2 );
+
+    return opcao;
 }

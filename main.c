@@ -12,7 +12,7 @@ void limparBuffer(char cod[]);
 
 int ind,op;
 char codigo[255], modelo [255], descricao[255], placa[255], marca[255];
-char iden[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],salario[255],tipo[255],endereco[255];
+char iden[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],tipo[255],salario[255],endereco[255];
 
 
 int main()
@@ -76,11 +76,16 @@ int main()
                 fgets(rg,255,stdin);
                 printf("Digite o salario do servidor : \n:");
                 fgets(salario,255,stdin);
-                printf("Digite a categoria do Servidor : \nProfessor ou Tecnico\n:");
-                fgets(tipo,255,stdin);
-                printf("Digite o endereco do Servidor : \n:"); // usar a ideia da concatenação ?
+                printf("Digite o endereco do Servidor : \n:");
                 fflush(stdin);
                 fgets(endereco,255,stdin);
+
+                op = type_serv();
+                if(op == 1)
+                    strcpy(tipo,"Professor");
+                else
+                    strcpy(tipo,"Tecnico");
+
 
                 criarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
@@ -122,12 +127,15 @@ int main()
                 printf("Digite o NOVO salario do servidor : \n:");
                 fflush(stdin);
                 fgets(salario,255,stdin);
-                printf("Digite a NOVA categoria do Servidor : \nProfessor ou Tecnico\n:");
-                fflush(stdin);
-                fgets(tipo,255,stdin);
                 printf("Digite o NOVO endereco do Servidor : \n:"); // usar a ideia da concatenação ?
                 fflush(stdin);
                 fgets(endereco,255,stdin);
+
+                op = type_serv();
+                if(op == 1)
+                    strcpy(tipo,"Professor");
+                else
+                    strcpy(tipo,"Tecnico");
 
                 // a diferença é que vai manter o mesmo codigo
                 atualizarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
