@@ -10,10 +10,6 @@ char nome_serv[MAX][255]; // obrigatoria
 char siape_serv[MAX][255];  // obrigatoria
 char cpf_serv[MAX][255]; // obrigatoria
 
-int ordenador_geral[255]; // print para todos os campos
-int ordenador_professor[255]; // print para professor
-int ordenador_tecnico[255]; // print para tecnicos
-
 char nasci_serv[MAX][255];
 char ende_serv[MAX][255];
 char rg_serv[MAX][255];
@@ -105,6 +101,7 @@ void deletarServidor(char entrada[])
     {
         if(!strcmp(cod[i],entrada))
         {
+
             ocupados[i] = 0;
             printf("\nDELETADO\n");
         }
@@ -113,30 +110,21 @@ void deletarServidor(char entrada[])
 
 void listarServer(int op)
 {
-    int i,opcao = 0;
+    int i;
     char codigoServidorInformado[255];
 
     switch (op) {
 
-        case 1: // printar tecnicos
-
-            cabecalho();
-            opcao = 1;
-            ordenando(opcao);
+        case 1: // printar tecnicos em ordem
+            ordenando(op);
             break;
 
-        case 2: // printar professor
-
-            cabecalho();
-            opcao = 2;
-            ordenando(opcao);
+        case 2: // printar professor em ordem
+            ordenando(op);
             break;
 
-        case 3: // printar todos // printar em ordem
-
-            cabecalho();
-            opcao = 3;
-            ordenando(opcao);
+        case 3: // printar todos em ordem
+            ordenando(op);
             break;
 
         case 4: // printar por cod
@@ -149,8 +137,6 @@ void listarServer(int op)
             }while(checarCodigos(codigoServidorInformado));
 
             if(!strcmp(codigoServidorInformado,"0")) break;
-
-            cabecalho();
 
             for(i = 0 ; i < MAX ; i++)
             {
@@ -171,70 +157,40 @@ void listarServer(int op)
 
 void print_cod(int index)
 {
+    cabecalho();
     printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n", cod[index], nome_serv[index], siape_serv[index],
                    cpf_serv[index], nasci_serv[index], rg_serv[index], salario_serv[index], tipo_serv[index],
                    ende_serv[index]);
 }
 
-void printar_all(vezes)
-{
-    int i;
+ void printar_serv( int ordenado[] )
+ {
+      int i;
+      cabecalho();
 
-    for(i = 0 ; i < vezes; ++i)
-    {
-        if( ordenador_geral[i] )
-        {
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
-                   cod[ordenador_geral[i]], nome_serv[ordenador_geral[i]],
-                   siape_serv[ordenador_geral[i]],
-                   cpf_serv[ordenador_geral[i]], nasci_serv[ordenador_geral[i]],
-                   rg_serv[ordenador_geral[i]], salario_serv[ordenador_geral[i]],
-                   tipo_serv[ordenador_geral[i]],ende_serv[ordenador_geral[i]]);
-        }
-    }
-}
+      for( i = 0 ; i < MAX ; ++i)
+      {
+           if( ordenado[i] )
+           {
+               printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
+                   cod[ordenado[i]], nome_serv[ordenado[i]],siape_serv[ordenado[i]],
+                   cpf_serv[ordenado[i]],nasci_serv[ordenado[i]],rg_serv[ordenado[i]],
+                   salario_serv[ordenado[i]],tipo_serv[ordenado[i]],ende_serv[ordenado[i]]);
+           }
 
-void printar_tec()
-{
-    int i;
-
-    for(i = 0 ; i < MAX; ++i)
-    {
-        if( ordenador_tecnico[i] )
-        {
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
-                   cod[ordenador_tecnico[i]], nome_serv[ordenador_tecnico[i]],
-                   siape_serv[ordenador_tecnico[i]],
-                   cpf_serv[ordenador_tecnico[i]], nasci_serv[ordenador_tecnico[i]],
-                   rg_serv[ordenador_tecnico[i]], salario_serv[ordenador_tecnico[i]],
-                   tipo_serv[ordenador_tecnico[i]],ende_serv[ordenador_tecnico[i]]);
-        }
-    }
-}
-
-void printar_prof()
-{
-    int i;
-    for(i = 0 ; i < MAX; ++i)
-    {
-        if( ordenador_professor[i] )
-        {
-            printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\t%s \t%s\n",
-                   cod[ordenador_professor[i]], nome_serv[ordenador_professor[i]],
-                   siape_serv[ordenador_professor[i]],
-                   cpf_serv[ordenador_professor[i]], nasci_serv[ordenador_professor[i]],
-                   rg_serv[ordenador_professor[i]], salario_serv[ordenador_professor[i]],
-                   tipo_serv[ordenador_professor[i]],ende_serv[ordenador_professor[i]]);
-        }
-    }
-}
+      }
+ }
 
 void ordenando(int opcao)
 {
     int i,j,quantia = 0;
     char copy_nome[MAX][255], aux[255];
+    int ordenador[255];
 
-    iniciar_ordenados();
+    for ( i = 0;  i < MAX ; ++i )
+    {
+        ordenador[i] = 0;
+    }
 
     for( i = 0 ; i < MAX ; ++i) // setando valores como zero para nao printar por cima
     {
@@ -270,13 +226,12 @@ void ordenando(int opcao)
                 {
                     if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Tecnico",tipo_serv[j]))
                     {
-                        ordenador_tecnico[i] = j;
+                        ordenador[i] = j;
+                        quantia++;
                     }
-
                 }
             }
-            printar_tec();
-
+            verificador_quantia(quantia,ordenador);
             break;
 
         case 2: // professores
@@ -287,11 +242,12 @@ void ordenando(int opcao)
                 {
                     if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Professor",tipo_serv[j]))
                     {
-                        ordenador_professor[i] = j;
+                        ordenador[i] = j;
+                        quantia++;
                     }
                 }
             }
-            printar_prof();
+            verificador_quantia(quantia,ordenador);
             break;
 
         case 3: // ordenando todos os valores
@@ -302,13 +258,12 @@ void ordenando(int opcao)
                 {
                     if(!strcmp(nome_serv[j],copy_nome[i]))
                     {
-                        ordenador_geral[i] = j;
+                        ordenador[i] = j;
                         quantia++;
                     }
-
                 }
             }
-            printar_all(quantia);
+            verificador_quantia(quantia,ordenador);
             break;
 
         default:
@@ -377,17 +332,6 @@ void cabecalho()
     printf("\nCod\tNome\tSiape\tCpf\t\tNascimento\tRg\t\tSalario\t\tTipo\t\tEndereco\n\n");
 }
 
-void iniciar_ordenados()
-{
-    int i;
-    for(i = 0 ; i < MAX ; ++i)
-    {
-        ordenador_geral[i] = 0;
-        ordenador_professor[i] = 0;
-        ordenador_tecnico[i] = 0;
-    }
-}
-
 int  type_serv()
 {
     int opcao;
@@ -409,4 +353,12 @@ int  type_serv()
     }while( opcao != 1 && opcao !=2 );
 
     return opcao;
+}
+
+void verificador_quantia(int quantia, int ordenador[])
+{
+    if(quantia == 0 ){
+        printf("\nSem registros Cadastre um novo Servidor!!\n");
+    }else
+        printar_serv(ordenador);
 }

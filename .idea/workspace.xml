@@ -14,10 +14,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Função ordenar servidores implementada e funcionando em todos os casos">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Melhorada a função Tipo Serv e melhorando a estrutura interna.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.h" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.h" afterDir="false" />
     </list>
@@ -104,7 +103,7 @@
       <workItem from="1650196152848" duration="31142000" />
       <workItem from="1650281744890" duration="9071000" />
       <workItem from="1650364490511" duration="10166000" />
-      <workItem from="1650743451943" duration="8116000" />
+      <workItem from="1650743451943" duration="12042000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -246,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650372005619</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Melhorada a função Tipo Serv e melhorando a estrutura interna.">
+      <created>1650751710935</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1650751710935</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,18 +289,10 @@
     <MESSAGE value="Esboço de ordenação implementado, bugs no print dos professore e no dos tec" />
     <MESSAGE value="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores" />
     <MESSAGE value="Função ordenar servidores implementada e funcionando em todos os casos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Função ordenar servidores implementada e funcionando em todos os casos" />
+    <MESSAGE value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>162</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="copy_nome" />

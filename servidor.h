@@ -18,12 +18,10 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
 void listarServer(int op);
 void deletarServidor(char entrada[]);
 void print_cod(int index);
-void printar_all(int vezes);
-void printar_prof();
-void printar_tec();
 void cabecalho();
 void ordenando(int opcao);
-void iniciar_ordenados();
 int type_serv();
+void printar_serv(int ordenado[]);
+void verificador_quantia(int, int []);
 
 #endif //SERVIDOR_H
