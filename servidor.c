@@ -5,6 +5,8 @@
 
 /*ÁREA DE PROCESSAMENTO DE DADOS REFERENTE A SERVIDORES */
 
+int ocupados[MAX];
+
 char cod[MAX][255]; // obrigatoria
 char nome_serv[MAX][255]; // obrigatoria
 char siape_serv[MAX][255];  // obrigatoria
@@ -361,4 +363,21 @@ void verificador_quantia(int quantia, int ordenador[])
         printf("\nSem registros Cadastre um novo Servidor!!\n");
     }else
         printar_serv(ordenador);
+}
+
+int checarCodigos(char temp_cod[])
+{
+    for (int i = 0; i < MAX; ++i)
+    {
+        if(!strcmp(temp_cod, codigos_v[i])) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void iniciar_ocupados() {
+    for(int i = 0; i < MAX; i++) {
+        ocupados[i] = 0;
+    }
 }

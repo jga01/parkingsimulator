@@ -4,4 +4,6 @@ project(parkingsimulator C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(parkingsimulator
-        main.c)
+        main.c
+        servidor.c
+        veiculo.c)
