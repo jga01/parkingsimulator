@@ -14,7 +14,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="mudanças em workspace">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +102,7 @@
       <workItem from="1650281744890" duration="9071000" />
       <workItem from="1650364490511" duration="10166000" />
       <workItem from="1650743451943" duration="12042000" />
+      <workItem from="1651013132918" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -247,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650751710935</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="mudanças em workspace">
+      <created>1651012732612</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1651012732612</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +296,8 @@
     <MESSAGE value="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores" />
     <MESSAGE value="Função ordenar servidores implementada e funcionando em todos os casos" />
     <MESSAGE value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
-    <option name="LAST_COMMIT_MESSAGE" value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
+    <MESSAGE value="mudanças em workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="mudanças em workspace" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -1,0 +1,13 @@
+# ninja log v5
+2	651	6725164365562707	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+652	1706	6725164378542690	parkingsimulator.exe	72e763dc13b5fcd7
+2	375	6725165571603455	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+376	873	6725165576523610	parkingsimulator.exe	72e763dc13b5fcd7
+5	2441	6725178073966290	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+2442	3405	6725178084396274	parkingsimulator.exe	72e763dc13b5fcd7
+9	391	6725180571015304	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+392	897	6725180575195299	parkingsimulator.exe	72e763dc13b5fcd7
+4	293	6725189297190427	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+295	557	6725189299810930	parkingsimulator.exe	72e763dc13b5fcd7
+3	322	6725190091093879	CMakeFiles/parkingsimulator.dir/main.c.obj	d55e593764eac1d
+323	733	6725190095142332	parkingsimulator.exe	72e763dc13b5fcd7
