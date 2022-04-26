@@ -276,18 +276,19 @@ void ordenando(int opcao)
 
 int existe_cod(char codigo[])
 {
-    int i;
-
-    for( i = 0 ; i < MAX ; ++i)
+    for(int i = 0 ; i < MAX ; ++i)
     {
-        if(!strcmp(cod[i],codigo)) return 0;
+        if(!strcmp(cod[i],codigo))
+        {
+            return 0;
+        }
     }
     return 1;
 }
 
 int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[] )
 {
-    int input1,input2,input3,input4,i;
+    int input1,input2,input3,input4;
     int teste;
 
     codigo[strcspn(codigo,"\n")] = 0;
@@ -296,31 +297,39 @@ int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[]
     cpf[strcspn(cpf,"\n")] = 0;
     iden[strcspn(iden,"\n")] = 0;
 
+
+    for (int i = 0; i < MAX; ++i) {
+
+        if(ocupados[i]){
+
+            if(!strcmp(iden,"1"))
+            {   // aqui ele trata o cod
+                teste = ( (!strcmp(cod[i], codigo) || !strcmp(siape_serv[i], siape)) || !strcmp(cpf_serv[i], cpf) );
+            }
+            else if (!strcmp(iden,"2"))
+            {   // aqui ele nao trata o cod
+                teste = ( !strcmp(siape_serv[i], siape) || !strcmp(cpf_serv[i], cpf) );
+            }
+            else
+            {
+                printf("\nERRO DE COMPARAÇÃO INTERNA\n");
+                return 1;
+            }
+
+            if (teste) // se pelo menos algum for repetido ele retorna 1 pedindo para reescrever
+            {
+                printf("\nAlguns dos dados estao repetidos\nTente Novamente\n\n");
+                return 1;
+            }
+        }
+    }
+    // caso não tenha se repetido avalia se algum é igual a \n
+
     input1 = strcmp(codigo,"\n"); // nao pode repetir
     input2 = strcmp(siape,"\n"); // nao pode repetir
     input3 = strcmp(cpf,"\n"); // nao pode repetir
     input4 = strcmp(nome,"\n");
 
-    for (i = 0; i < MAX; ++i) {
-
-        if(!strcmp(iden,"1"))
-        {
-            // aqui ele trata o cod
-            teste = ( (!strcmp(cod[i], codigo) || !strcmp(siape_serv[i], siape)) || !strcmp(cpf_serv[i], cpf) );
-        }
-        else{
-            // aqui ele nao trata o cod
-            teste = ( !strcmp(siape_serv[i], siape) || !strcmp(cpf_serv[i], cpf) );
-        }
-
-        if (teste) // se pelo menos algum for repetido ele retorna 1 pedindo para reescrever
-        {
-                printf("\nAlguns dos dados estao repetidos\nTente Novamente\n\n");
-                return 1;
-        }
-    }
-
-    // se algum for igual a um enter == "\n" ele vai ter valor zero e tornar verdadeira a condição
     if(!(input1 && input2 && input3 && input4)) {
 
         printf("\nDigite Valores validos para entrada\nNao digite espacos\n\n");
@@ -365,7 +374,7 @@ void verificador_quantia(int quantia, int ordenador[])
         printar_serv(ordenador);
 }
 
-int checarCodigos(char temp_cod[])
+int checarCodigos(char temp_cod[]) // função para comparar com os dos veiculos
 {
     for (int i = 0; i < MAX; ++i)
     {
@@ -375,9 +384,10 @@ int checarCodigos(char temp_cod[])
     }
     return 0;
 }
-
-void iniciar_ocupados() {
-    for(int i = 0; i < MAX; i++) {
+void iniciar_ocupados()
+{
+    for(int i = 0; i < MAX; i++)
+    {
         ocupados[i] = 0;
     }
 }

@@ -45,8 +45,8 @@ int main()
         printf("0. Sair do programa.\n\n");
 
         printf("Opcao: ");
-        scanf("%c", &input);
         fflush(stdin);
+        scanf("%c", &input);
 
         printf("\n");
 
@@ -59,26 +59,34 @@ int main()
 
             case '1': // criar servidor
                 do {
+
+                    fflush(stdin);
                     printf("Digite o codigo do Servidor : \n:");
                     fgets(entrada,255,stdin);
+                    fflush(stdin);
                     printf("Digite o nome do Servidor : \n:");
                     fgets(nome,255,stdin);
+                    fflush(stdin);
                     printf("Digite o siape do Servidor : \n:");
                     fgets(siape,255,stdin);
+                    fflush(stdin);
                     printf("Digite o cpf do Servidor : \n:");
                     fgets(cpf,255,stdin);
                     strcpy(iden,"1");
 
                 }while(checaEntrada(entrada,nome,siape,cpf,iden));
 
+                fflush(stdin);
                 printf("Digite a data de nascimento do Servidor : \n:");
                 fgets(nasci,255,stdin);
+                fflush(stdin);
                 printf("Digite o rg do Servidor : \n:");
                 fgets(rg,255,stdin);
+                fflush(stdin);
                 printf("Digite o salario do servidor : \n:");
                 fgets(salario,255,stdin);
+                fflush(stdin);
                 printf("Digite o endereco do Servidor : \n:");
-                //fflush(stdin);
                 fgets(endereco,255,stdin);
 
                 op = type_serv();
@@ -86,7 +94,6 @@ int main()
                     strcpy(tipo,"Professor");
                 else
                     strcpy(tipo,"Tecnico");
-
 
                 criarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
@@ -164,8 +171,8 @@ int main()
                 fflush(stdin);
 
                 listarServer(op);
-
                 break;
+
             case '5': //inserir veiculo
                 do {
                     printf("Digite o codigo do proprietario: ");

@@ -23,7 +23,7 @@ void cabecalho();
 void ordenando(int opcao);
 int type_serv();
 void printar_serv(int ordenado[]);
-void verificador_quantia(int, int []);
+void verificador_quantia(int quantia, int ordenador[]);
 int checarCodigos(char temp_cod[]);
 int checaEntrada(char codigo[],char nome[], char siape[],char cpf[], char iden[] );
 int existe_cod(char codigo[]);
