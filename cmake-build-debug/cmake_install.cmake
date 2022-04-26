@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/pedro/CLionProjects/parkingsimulator
+# Install script for directory: C:/Users/tiago/Desktop/C/parkingsimulator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/pedro/CLionProjects/parkingsimulator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/tiago/Desktop/C/parkingsimulator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
