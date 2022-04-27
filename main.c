@@ -235,6 +235,7 @@ int main()
             case '8': //listar veiculo
                 printf("1. Listar veiculo por codigo\n");
                 printf("2. Listar veiculos de um servidor\n");
+                printf("3. Listar veiculos por ordem alfabetica\n");
                 scanf("%c", &input);
                 fflush(stdin);
                 switch(input) {
@@ -247,6 +248,11 @@ int main()
                         printf("Digite o codigo do servidor: ");
                         fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
                         listar_veiculo_por_servidor(temp_cod_s_v);
+                        break;
+                    case '3':
+                        printf("Digite o codigo do servidor: ");
+                        fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
+                        listar_veiculo_ordenado(temp_cod_s_v);
                         break;
                     default:
                         printf("Invalida!\n");

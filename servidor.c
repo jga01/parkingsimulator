@@ -350,6 +350,7 @@ int  type_serv()
     do {
         printf("Digite a categoria do Servidor : \n1-Professor\n2-Tecnico\n:");
         scanf("%d", &opcao);
+        fflush(stdin);
 
         if (opcao == 1) {
             return 1; // professor
