@@ -161,16 +161,6 @@ void listar_veiculo_ordenado(char cod_serv_v[]) {
         }
     }
 
-    /*for(int i = 0; i < MAX; i ++) {
-        printf("%s ", codigos_serv_v[i]);
-    }
-
-    printf("\n%d\n", SIZE);
-
-    for(int i = 0; i < SIZE; i++) {
-        printf("%s ", veiculos_ordenados[i]);
-    }*/
-
     for(int i = 0; i < SIZE; i++) {
         for(int j = 0; j < MAX; j++) {
             if(!strcmp(veiculos_ordenados[i], marcas[j]) && !strcmp(cod_serv_v, codigos_serv_v[j])) {
