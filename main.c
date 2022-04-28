@@ -74,7 +74,7 @@ int main()
                     fgets(cpf,255,stdin);
                     strcpy(iden,"1");
 
-                }while(checaEntrada(entrada,nome,siape,cpf,iden));
+                }while( checa_branco(entrada,nome,siape,cpf,iden) );
 
                 fflush(stdin);
                 printf("Digite a data de nascimento do Servidor : \n:");
@@ -104,7 +104,7 @@ int main()
                 scanf("%s",&entrada);
                 fflush(stdin);
 
-                while(existe_cod(entrada))
+                while(!existe_cod(entrada))
                 {
                     printf("Esse cod nao faz referencia a nenhum servidor\n");
                     printf("Digite um cod valido\n:");
@@ -123,9 +123,7 @@ int main()
                     fgets(cpf,255,stdin);
                     strcpy(iden, "2");
 
-                }while( checaEntrada(entrada,nome,siape,cpf,iden) );
-
-                //codigo[strcspn(codigo,"\n")] = 0;
+                }while( checa_branco(entrada,nome,siape,cpf,iden) );
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
                 fflush(stdin);
@@ -141,12 +139,9 @@ int main()
                 fgets(endereco,255,stdin);
 
                 op = type_serv();
-                if(op == 1)
-                    strcpy(tipo,"Professor");
-                else
-                    strcpy(tipo,"Tecnico");
+                if(op == 1) strcpy(tipo,"Professor");
+                else strcpy(tipo,"Tecnico");
 
-                // a diferença é que vai manter o mesmo codigo
                 atualizarServidor(entrada,nome,siape,cpf,nasci,rg,salario,tipo,endereco);
                 break;
 
@@ -170,7 +165,7 @@ int main()
                 scanf("%d",&op);
                 fflush(stdin);
 
-                listarServer(op);
+                menu_listar_server(op);
                 break;
 
             case '5': //inserir veiculo
