@@ -45,8 +45,8 @@ int main()
         printf("0. Sair do programa.\n\n");
 
         printf("Opcao: ");
-        fflush(stdin);
         scanf("%c", &input);
+        fflush(stdin);
 
         printf("\n");
 

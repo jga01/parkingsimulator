@@ -6,6 +6,7 @@
 #include "veiculo.h"
 #include "servidor.h"
 
+char nomes_serv_v[MAX][255];
 char codigos_serv_v[MAX][255];
 char codigos_v[MAX][255];
 char modelos[MAX][255];
@@ -30,6 +31,10 @@ int inserir_veiculo(char cod_serv_v[], char cod_v[], char mod[], char desc[], ch
 
     for(int i = 0; i < MAX; i++) {
         if(!ocupados_veiculos[i]) {
+            for(int j = 0; j < MAX; j++) {
+                if(!strcmp(cod_serv_v, cod[j]))
+                    strcpy(nomes_serv_v[i], nome_serv[j]);
+            }
             strcpy(codigos_serv_v[i], cod_serv_v);
             strcpy(codigos_v[i], cod_v);
             strcpy(modelos[i], mod);
@@ -85,7 +90,7 @@ void listar_veiculo_por_codigo(char cod_v[]) {
     for(int i = 0; i < MAX; i++) {
         if(!strcmp(cod_v, codigos_v[i])) {
             if(!count)
-                printf("(%s)\n", codigos_serv_v[i]);
+                printf("(%s)\n", nomes_serv_v[i]);
             printf("Codigo: %s\n", codigos_v[i]);
             printf("Marca: %s\n", marcas[i]);
             printf("Modelo: %s\n", modelos[i]);
@@ -105,7 +110,7 @@ void listar_veiculo_por_servidor(char cod_serv_v[]) {
     for(int i = 0; i < MAX; i++) {
         if(!strcmp(cod_serv_v, codigos_serv_v[i])) {
             if(!count)
-                    printf("(%s)\n", codigos_serv_v[i]);
+                    printf("(%s)\n", nomes_serv_v[i]);
             printf("Codigo: %s\n", codigos_v[i]);
             printf("Marca: %s\n", marcas[i]);
             printf("Modelo: %s\n", modelos[i]);
@@ -137,13 +142,15 @@ void listar_veiculo_ordenado(char cod_serv_v[]) {
         }
     }
 
-    for(int i = 0; i < SIZE; i++) {
+    int k = 0;
+    for(int i = 0; i < MAX; i++) {
         if(!strcmp(cod_serv_v, codigos_serv_v[i])) {
-            strcpy(veiculos_ordenados[i], marcas[i]);
+            strcpy(veiculos_ordenados[k], marcas[i]);
+            k++;
         }
     }
 
-    for(int i = 0; i < SIZE-1; i++) {
+    for(int i = 0; i < SIZE; i++) {
         for(int j = 0; j < SIZE-1; j++) {
             char aux[256];
             if(tolower(veiculos_ordenados[j][0]) > tolower(veiculos_ordenados[j+1][0])) {
@@ -154,11 +161,21 @@ void listar_veiculo_ordenado(char cod_serv_v[]) {
         }
     }
 
+    /*for(int i = 0; i < MAX; i ++) {
+        printf("%s ", codigos_serv_v[i]);
+    }
+
+    printf("\n%d\n", SIZE);
+
+    for(int i = 0; i < SIZE; i++) {
+        printf("%s ", veiculos_ordenados[i]);
+    }*/
+
     for(int i = 0; i < SIZE; i++) {
         for(int j = 0; j < MAX; j++) {
-            if(!strcmp(veiculos_ordenados[i], marcas[j])) {
+            if(!strcmp(veiculos_ordenados[i], marcas[j]) && !strcmp(cod_serv_v, codigos_serv_v[j])) {
                 if(!count)
-                    printf("(%s)\n", codigos_serv_v[j]);
+                    printf("(%s)\n", nomes_serv_v[j]);
                 printf("Codigo: %s\n", codigos_v[j]);
                 printf("Marca: %s\n", marcas[j]);
                 printf("Modelo: %s\n", modelos[j]);

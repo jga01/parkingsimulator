@@ -3,6 +3,7 @@
 
 #define MAX 100
 
+extern char nomes_serv_v[MAX][255];
 extern char codigos_serv_v[MAX][255];
 extern char codigos_v[MAX][255];
 extern char modelos[MAX][255];
