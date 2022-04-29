@@ -14,23 +14,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="corrigido todos os bugs explicitos e refatorando o cod">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="Melhorando a estrutura do cod e implementando a caixa baixa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/a.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/parkingsimulator.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/parkingsimulator.dir/main.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/parkingsimulator.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/parkingsimulator.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.c" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/servidor.h" beforeDir="false" afterPath="$PROJECT_DIR$/servidor.h" afterDir="false" />
@@ -91,9 +79,9 @@
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="parkingsimulator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="parkingsimulator" TARGET_NAME="parkingsimulator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="parkingsimulator" RUN_TARGET_NAME="parkingsimulator">
@@ -124,7 +112,8 @@
       <workItem from="1650281744890" duration="9071000" />
       <workItem from="1650364490511" duration="10166000" />
       <workItem from="1650743451943" duration="12042000" />
-      <workItem from="1651187335130" duration="5414000" />
+      <workItem from="1651187335130" duration="5492000" />
+      <workItem from="1651234137281" duration="7162000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -273,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650751710935</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Melhorando a estrutura do cod e implementando a caixa baixa">
+      <created>1651192882382</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1651192882382</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +307,8 @@
     <MESSAGE value="Melhorando o esqueleto de ordenação, print todos sem bug, bug apenas em servidores" />
     <MESSAGE value="Função ordenar servidores implementada e funcionando em todos os casos" />
     <MESSAGE value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
-    <option name="LAST_COMMIT_MESSAGE" value="Melhorada a função Tipo Serv e melhorando a estrutura interna." />
+    <MESSAGE value="Melhorando a estrutura do cod e implementando a caixa baixa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorando a estrutura do cod e implementando a caixa baixa" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

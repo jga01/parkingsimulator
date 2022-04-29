@@ -29,6 +29,6 @@ int checa_repeti(char codigo[],char nome[], char siape[],char cpf[], char iden[]
 int existe_cod(char codigo[]);
 void iniciar_ocupados();
 int checa_branco(char codigo[],char nome[], char siape[],char cpf[], char indentficador[]);
-char *caixa_baixa(char nome[]);
+char *caixa_correcao(char nome[]);
 
 #endif //SERVIDOR_H

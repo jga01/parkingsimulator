@@ -43,7 +43,7 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
     endereco[strcspn(endereco,"\n")] = 0;
 
     strcpy(cod[index], entrada);
-    strcpy(nome_serv[index], caixa_baixa(nome));
+    strcpy(nome_serv[index], nome);
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
     strcpy(nasci_serv[index], nasci);
@@ -68,7 +68,7 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
     tipo[strcspn(tipo,"\n")] = 0;
     endereco[strcspn(endereco,"\n")] = 0;
 
-    strcpy(nome_serv[index], caixa_baixa(nome) );
+    strcpy(nome_serv[index], nome);
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
     strcpy(nasci_serv[index], nasci);
@@ -147,20 +147,22 @@ void print_serv_cod()
 
  void printar_serv( int ordenado[])
  {
+    char aux[255];
     printf("\n##################LISTANDO###################\n");
     for( int i = 0 ; i < MAX ; ++i)
     {
         if( ordenado[i] )
         {
-               printf("Codigo: %s\n", cod[ordenado[i]] );
-               printf("Nome: %s\n", nome_serv[ordenado[i]] );
-               printf("Siape: %s\n", siape_serv[ordenado[i]] );
-               printf("Salario: %s\n", salario_serv[ordenado[i]] );
-               printf("Nascimento: %s\n", nasci_serv[ordenado[i]] );
-               printf("Cpf: %s\n", cpf_serv[ordenado[i]] );
-               printf("Rg: %s\n", rg_serv[ordenado[i]] );
-               printf("Tipo de Servidor: %s\n", tipo_serv[ordenado[i]] );
-               printf("Endereco: %s\n\n", ende_serv[ordenado[i]] );
+            strcpy( aux, caixa_correcao(nome_serv[ordenado[i]] ) );
+            printf("Codigo: %s\n", cod[ordenado[i]] );
+            printf("Nome: %s\n", aux );
+            printf("Siape: %s\n", siape_serv[ordenado[i]] );
+            printf("Salario: %s\n", salario_serv[ordenado[i]] );
+            printf("Nascimento: %s\n", nasci_serv[ordenado[i]] );
+            printf("Cpf: %s\n", cpf_serv[ordenado[i]] );
+            printf("Rg: %s\n", rg_serv[ordenado[i]] );
+            printf("Tipo de Servidor: %s\n", tipo_serv[ordenado[i]] );
+            printf("Endereco: %s\n\n", ende_serv[ordenado[i]] );
         }
 
     }
@@ -193,7 +195,7 @@ void ordenando(int opcao)
     {
         for( j = 0 ; j < (MAX - i - 1) ; ++j)
         {
-            if(  strncmp( copy_nome[j], copy_nome[j+1], 3) > 0 ) // troca o pedro pelo \0 ??
+            if( (tolower(copy_nome[j][0]) > tolower(copy_nome[j+1][0]) ) || ( (tolower(copy_nome[j][0]) == tolower(copy_nome[j+1][0])) && (tolower(copy_nome[j][1]) > tolower(copy_nome[j+1][1])) ) )
             {
                 strcpy(aux,copy_nome[j]);
                 strcpy(copy_nome[j],copy_nome[j+1]);
@@ -240,7 +242,7 @@ void ordenando(int opcao)
 
             for(i = 0 ; i < MAX ; ++i)
             {
-                for(j = 0 ; j < (MAX - i - 1) ; ++j)
+                for(j = 0 ; j < MAX ; ++j)
                 {
                     if(!strcmp(nome_serv[j],copy_nome[i]))
                     {
@@ -356,11 +358,15 @@ void iniciar_ocupados()
     }
 }
 
-char *caixa_baixa(char nome[])
+char *caixa_correcao(char nome[])
 {
-    for(int i = 0; i < 255 ; ++i)
+    for(int i = 0 ; i < 255 ; ++i)
     {
-        nome[i] = tolower(nome[i]);
+        nome[0] = toupper(nome[0]);
+        if(nome[i] == ' ')
+        {
+            nome[i+1] = toupper(nome[i+1]);
+        }
     }
     return nome;
 }
