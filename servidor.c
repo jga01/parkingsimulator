@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "veiculo.h"
 #include "servidor.h"
 
@@ -24,15 +25,13 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
 
     for( i = 0 ;  i < MAX ; i++) // Verificando indices livres
     {
-        if ( !(ocupados[i]))
+        if ( !(ocupados[i]) )
         {
-            if( i == 0 ) continue; // não quero cadastrar no indice 0
-
+            if( !i ) continue; // não quero cadastrar no indice 0
             index = i;
             break;
         }
     }
-
     entrada[strcspn(entrada,"\n")] = 0;
     nome[strcspn(nome, "\n")] = 0;
     siape[strcspn(siape,"\n")] = 0;
@@ -44,7 +43,7 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
     endereco[strcspn(endereco,"\n")] = 0;
 
     strcpy(cod[index], entrada);
-    strcpy(nome_serv[index], nome);
+    strcpy(nome_serv[index], caixa_baixa(nome));
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
     strcpy(nasci_serv[index], nasci);
@@ -58,16 +57,7 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
 
 void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf[255],char nasci[255],char rg[255],char salario[255],char tipo[255],char endereco[255])
 {
-    int  i,index = 0;
-
-    for( i = 0; i < MAX ; i++)
-    {
-        if( !strcmp(entrada,cod[i]) )
-        {
-            index = i;
-            break;
-        }
-    }
+    int index = existe_cod(entrada);
 
     nome[strcspn(nome, "\n")] = 0;
     siape[strcspn(siape,"\n")] = 0;
@@ -78,8 +68,7 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
     tipo[strcspn(tipo,"\n")] = 0;
     endereco[strcspn(endereco,"\n")] = 0;
 
-
-    strcpy(nome_serv[index], nome);
+    strcpy(nome_serv[index], caixa_baixa(nome) );
     strcpy(siape_serv[index],siape);
     strcpy(cpf_serv[index], cpf);
     strcpy(nasci_serv[index], nasci);
@@ -87,21 +76,20 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
     strcpy(salario_serv[index], salario);
     strcpy(tipo_serv[index], tipo);
     strcpy(ende_serv[index],endereco);
-    /*Ocupados já é 1*/
-
 }
+
 void deletarServidor(char entrada[])
 {
     entrada[strcspn(entrada,"\n")] = 0;
-    // entrada == cod do servidor
+    int indice = existe_cod(entrada);
+    int valor_posicao = ocupados[indice];
 
-    for(int i = 0 ; i<MAX ; ++i)
+    if( indice && valor_posicao )
     {
-        if(!strcmp(cod[i],entrada))
-        {
-            ocupados[i] = 0;
-            printf("\n##DELETADO##\n");
-        }
+        ocupados[indice] = 0;
+        printf("\n##DELETADO##\n");
+    }else {
+        printf("\nDigite um codigo de servidor valido!\n");
     }
 }
 
@@ -126,7 +114,7 @@ void menu_listar_server(int op)
             break;
 
         default:
-            printf("Essa opção não existe \n");
+            printf("\n#Essa opcao nao existe !!#\n#Tente Novamente# \n");
             break;
     }
     return ;
@@ -157,22 +145,22 @@ void print_serv_cod()
 
 }
 
- void printar_serv( int ordenado[] )
+ void printar_serv( int ordenado[])
  {
     printf("\n##################LISTANDO###################\n");
     for( int i = 0 ; i < MAX ; ++i)
     {
         if( ordenado[i] )
         {
-               printf("Codigo: %s\n", cod[ordenado[i]]);
-               printf("Nome: %s\n", nome_serv[ordenado[i]]);
-               printf("Siape: %s\n", siape_serv[ordenado[i]]);
-               printf("Salario: %s\n", salario_serv[ordenado[i]]);
-               printf("Nascimento: %s\n", nasci_serv[ordenado[i]]);
-               printf("Cpf: %s\n", cpf_serv[ordenado[i]]);
-               printf("Rg: %s\n", rg_serv[ordenado[i]]);
-               printf("Tipo de Servidor: %s\n", tipo_serv[ordenado[i]]);
-               printf("Endereco: %s\n\n", ende_serv[ordenado[i]]);
+               printf("Codigo: %s\n", cod[ordenado[i]] );
+               printf("Nome: %s\n", nome_serv[ordenado[i]] );
+               printf("Siape: %s\n", siape_serv[ordenado[i]] );
+               printf("Salario: %s\n", salario_serv[ordenado[i]] );
+               printf("Nascimento: %s\n", nasci_serv[ordenado[i]] );
+               printf("Cpf: %s\n", cpf_serv[ordenado[i]] );
+               printf("Rg: %s\n", rg_serv[ordenado[i]] );
+               printf("Tipo de Servidor: %s\n", tipo_serv[ordenado[i]] );
+               printf("Endereco: %s\n\n", ende_serv[ordenado[i]] );
         }
 
     }
@@ -205,7 +193,7 @@ void ordenando(int opcao)
     {
         for( j = 0 ; j < (MAX - i - 1) ; ++j)
         {
-            if(  strcmp( copy_nome[j], copy_nome[j+1]) > 0 ) // troca o pedro pelo \0 ??
+            if(  strncmp( copy_nome[j], copy_nome[j+1], 3) > 0 ) // troca o pedro pelo \0 ??
             {
                 strcpy(aux,copy_nome[j]);
                 strcpy(copy_nome[j],copy_nome[j+1]);
@@ -345,7 +333,7 @@ int  type_serv()
 
 void verificador_quantia(int quantia, int ordenador[])
 {
-    if (quantia == 0) printf("\nSem registros Cadastre um novo Servidor!!\n");
+    if (!quantia) printf("\nSem registros!!\nCadastre um novo Servidor!!\n");
     else printar_serv(ordenador);
 }
 
@@ -366,4 +354,13 @@ void iniciar_ocupados()
     {
         ocupados[i] = 0;
     }
+}
+
+char *caixa_baixa(char nome[])
+{
+    for(int i = 0; i < 255 ; ++i)
+    {
+        nome[i] = tolower(nome[i]);
+    }
+    return nome;
 }
