@@ -57,7 +57,7 @@ int alterar_veiculo(char cod_v[], char mod[], char desc[], char plac[], char mar
 
     for(int i = 0; i < MAX; i++) {
         if(!ocupados_veiculos[i] && !strcmp(cod_v, codigos_v[i])) {
-            strcpy(codigos_v[i], cod_v);
+            //strcpy(codigos_v[i], cod_v);
             strcpy(modelos[i], mod);
             strcpy(descricoes[i], desc);
             strcpy(placas[i], plac);
@@ -175,6 +175,9 @@ void listar_veiculo_ordenado(char cod_serv_v[]) {
             }
         }
     }
+    if(!count) {
+        printf("Servidor nao existe ou nao possui veiculos.\n");
+    }
 }
 
 int checar_servidor_veiculo(char cod_serv_v[]) {
@@ -205,4 +208,13 @@ int checar_descricao_veiculo(char desc[]) {
             return 1;
     }
     return 0;
+}
+
+int checar_em_branco(char string[]) {
+    string[strcspn(string, "\n")] = 0;
+    if(!strlen(string)) {
+        return 1;
+    } else {
+        return 0;
+    }
 }

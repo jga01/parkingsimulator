@@ -12,6 +12,7 @@ int main()
     iniciar_ocupados();
     iniciar_ocupados_veiculos();
 
+    int done = 1;
     char temp_cod_s_v[256];
     char temp_cod_v[256];
     char temp_marca[256];
@@ -172,59 +173,75 @@ int main()
                 do {
                     printf("Digite o codigo do proprietario: ");
                     fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
-                    if(!checar_servidor_veiculo((temp_cod_s_v)))
+                    if(!checar_servidor_veiculo((temp_cod_s_v))) {
                         printf("Nenhum servidor com esse codigo.\n");
-                } while(!checar_servidor_veiculo(temp_cod_s_v));
+                        done = 0;
+                    }
+                } while(checar_em_branco(temp_cod_s_v));
+                if(!done) {done=1;break;}
                 do {
                     printf("Digite o codigo do veiculo: ");
                     fgets(temp_cod_v, sizeof(temp_cod_v), stdin);
                     if(checar_codigo_veiculo(temp_cod_v))
-                        printf("Esse codigo esta em uso!\n");
-                } while(checar_codigo_veiculo((temp_cod_v)));
+                        printf("Esse codigo esta em uso ou nenhum codigo foi inserido!\n");
+                } while(checar_codigo_veiculo((temp_cod_v)) || checar_em_branco(temp_cod_v));
                 do {
                     printf("Digite a descricao do veiculo: ");
                     fgets(temp_desc, sizeof(temp_desc), stdin);
                     if(checar_descricao_veiculo(temp_desc))
-                        printf("Essa descricao esta em uso!\n");
-                } while(checar_descricao_veiculo(temp_desc));
-                printf("Digite a marca do veiculo: ");
-                fgets(temp_marca, sizeof(temp_marca), stdin);
-                printf("Digite o modelo do veiculo: ");
-                fgets(temp_mdl, sizeof(temp_mdl), stdin);
-                printf("Digite a placa do veiculo: ");
-                fgets(temp_placa, sizeof(temp_placa), stdin);
+                        printf("Essa descricao esta em uso ou nenhuma descricao foi inserida!\n");
+                } while(checar_descricao_veiculo(temp_desc) || checar_em_branco(temp_desc));
+                do {
+                    printf("Digite a marca do veiculo: ");
+                    fgets(temp_marca, sizeof(temp_marca), stdin);
+                } while(checar_em_branco(temp_marca));
+                do {
+                    printf("Digite o modelo do veiculo: ");
+                    fgets(temp_mdl, sizeof(temp_mdl), stdin);
+                } while(checar_em_branco(temp_mdl));
+                do {
+                    printf("Digite a placa do veiculo: ");
+                    fgets(temp_placa, sizeof(temp_placa), stdin);
+                } while(checar_em_branco(temp_placa));
                 inserir_veiculo(temp_cod_s_v, temp_cod_v, temp_mdl, temp_desc, temp_placa, temp_marca);
                 break;
             case '6': //alterar veiculo
                 do {
-                    printf("Digite o codigo do proprietario: ");
-                    fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
-                    if(!checar_servidor_veiculo((temp_cod_s_v)))
-                        printf("Nenhum servidor com esse codigo.\n");
-                } while(!checar_servidor_veiculo(temp_cod_s_v));
-                do {
                     printf("Digite o codigo do veiculo: ");
                     fgets(temp_cod_v, sizeof(temp_cod_v), stdin);
-                    if(checar_codigo_veiculo(temp_cod_v))
-                        printf("Esse codigo esta em uso!\n");
-                } while(checar_codigo_veiculo((temp_cod_v)));
+                    if(!checar_codigo_veiculo(temp_cod_v)) {
+                        printf("Esse codigo nao existe\n");
+                        done = 0;
+                    }
+                } while(checar_em_branco(temp_cod_v));
+                if(!done) {done=1;break;}
                 do {
                     printf("Digite a descricao do veiculo: ");
                     fgets(temp_desc, sizeof(temp_desc), stdin);
                     if(checar_descricao_veiculo(temp_desc))
                         printf("Essa descricao esta em uso!\n");
-                } while(checar_descricao_veiculo(temp_desc));
-                printf("Digite a marca do veiculo: ");
-                fgets(temp_marca, sizeof(temp_marca), stdin);
-                printf("Digite o modelo do veiculo: ");
-                fgets(temp_mdl, sizeof(temp_mdl), stdin);
-                printf("Digite a placa do veiculo: ");
-                fgets(temp_placa, sizeof(temp_placa), stdin);
+                } while(checar_descricao_veiculo(temp_desc) || checar_em_branco(temp_desc));
+                do {
+                    printf("Digite a marca do veiculo: ");
+                    fgets(temp_marca, sizeof(temp_marca), stdin);
+                } while(checar_em_branco(temp_marca));
+                do {
+                    printf("Digite o modelo do veiculo: ");
+                    fgets(temp_mdl, sizeof(temp_mdl), stdin);
+                } while(checar_em_branco(temp_mdl));
+                do {
+                    printf("Digite a placa do veiculo: ");
+                    fgets(temp_placa, sizeof(temp_placa), stdin);
+                } while(checar_em_branco(temp_placa));
                 alterar_veiculo(temp_cod_v, temp_mdl, temp_desc, temp_placa, temp_marca);
                 break;
             case '7': //deletar veiculo
                 printf("Digite o codigo do veiculo: ");
                 fgets(temp_cod_v, sizeof(temp_cod_v), stdin);
+                if(checar_em_branco(temp_cod_v) || !checar_codigo_veiculo(temp_cod_v)) {
+                    printf("Digite um codigo valido e existente.\n");
+                    done = 0;
+                } if(!done) {done=1;break;}
                 excluir_veiculo(temp_cod_v);
                 break;
             case '8': //listar veiculo
@@ -237,16 +254,28 @@ int main()
                     case '1':
                         printf("Digite o codigo do veiculo: ");
                         fgets(temp_cod_v, sizeof(temp_cod_v), stdin);
+                        if(checar_em_branco(temp_cod_v) || !checar_codigo_veiculo(temp_cod_v)) {
+                            printf("Digite um codigo valido e existente.\n");
+                            done = 0;
+                        } if(!done) {done=1;break;}
                         listar_veiculo_por_codigo(temp_cod_v);
                         break;
                     case '2':
                         printf("Digite o codigo do servidor: ");
                         fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
+                        if(checar_em_branco(temp_cod_s_v) || !checar_servidor_veiculo(temp_cod_s_v)) {
+                            printf("Digite um codigo valido e existente.\n");
+                            done = 0;
+                        } if(!done) {done=1;break;}
                         listar_veiculo_por_servidor(temp_cod_s_v);
                         break;
                     case '3':
                         printf("Digite o codigo do servidor: ");
                         fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);
+                        if(checar_em_branco(temp_cod_s_v) || !checar_servidor_veiculo(temp_cod_s_v)) {
+                            printf("Digite um codigo valido e existente.\n");
+                            done = 0;
+                        } if(!done) {done=1;break;}
                         listar_veiculo_ordenado(temp_cod_s_v);
                         break;
                     default:
