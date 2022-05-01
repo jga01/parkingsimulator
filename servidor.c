@@ -137,12 +137,10 @@ void print_serv_cod()
             printf("\n#Quantia de tentativas excedidas retornando para menu#\n");
             return;
         }
-
     }while( !existe_cod(codigoServidor) );
 
     indice[0] = existe_cod(codigoServidor);
     printar_serv(indice);
-
 }
 
  void printar_serv( int ordenado[])
@@ -180,16 +178,11 @@ void ordenando(int opcao)
         ordenador[i] = 0;
     }
 
-    for( i = 0 ; i < MAX ; ++i) // setando valores como zero para nao printar por cima
+    for( i = 0 ; i < MAX ; ++i)
     {
-        if(ocupados[i])
-        {
-            strcpy(copy_nome[i],nome_serv[i]); // inserir um low case aqui
-
-        }else strcpy(copy_nome[i],"~");
+        if(ocupados[i]) strcpy(copy_nome[i],nome_serv[i]);
+        else strcpy(copy_nome[i],"~");
     }
-
-    // ordenando o vetor copy_nome com o método bubble sort
 
     for( i = 0 ; i < MAX; ++i)
     {
@@ -205,7 +198,6 @@ void ordenando(int opcao)
     }
 
     switch (opcao) {
-
         case 1: // tecnicos
 
             for( i = 0 ; i < MAX ; ++i)
@@ -221,7 +213,6 @@ void ordenando(int opcao)
             }
             verificador_quantia(quantia,ordenador);
             break;
-
         case 2: // professores
 
             for( i = 0 ; i < MAX ; ++i)
@@ -237,7 +228,6 @@ void ordenando(int opcao)
             }
             verificador_quantia(quantia,ordenador);
             break;
-
         case 3: // ordenando todos os valores
 
             for(i = 0 ; i < MAX ; ++i)
@@ -255,7 +245,6 @@ void ordenando(int opcao)
             break;
 
         default:
-            // Erro interpretado, logo não vai rodar nada
             break;
     }
 }
@@ -273,10 +262,10 @@ int checa_repeti(char codigo[],char nome[], char siape[],char cpf[], char iden[]
 {
     int teste, indice = existe_cod(codigo);
 
-    codigo[strcspn(codigo,"\n")] = 0;
+    codigo[strcspn(codigo,"\n")] = 0; // não pode repetir
     nome[strcspn(nome, "\n")] = 0;
-    siape[strcspn(siape,"\n")] = 0;
-    cpf[strcspn(cpf,"\n")] = 0;
+    siape[strcspn(siape,"\n")] = 0; // não pode repetir
+    cpf[strcspn(cpf,"\n")] = 0; // não pode repetir
     iden[strcspn(iden,"\n")] = 0;
 
     for (int i = 1; i < MAX; ++i) {
@@ -290,7 +279,7 @@ int checa_repeti(char codigo[],char nome[], char siape[],char cpf[], char iden[]
                 teste = ( strcmp(siape_serv[i], siape) && strcmp(cpf_serv[i], cpf) );
             }
 
-            if (!teste){ // se pelo menos algum for repetido ele retorna 1 pedindo para reescrever
+            if (!teste){
                 printf("\nAlguns dos dados estao repetidos\nTente Novamente\n\n");
                 return 1;
             }
@@ -303,10 +292,10 @@ int checa_branco(char codigo[],char nome[], char siape[],char cpf[], char indent
 {
     int input1,input2,input3,input4;
 
-    input1 = strcmp(codigo,"\n"); // nao pode repetir
-    input2 = strcmp(siape,"\n"); // nao pode repetir
-    input3 = strcmp(cpf,"\n"); // nao pode repetir
-    input4 = strcmp(nome,"\n");
+    input1 = strcmp(codigo,"\n"); // nao pode ficar em branco
+    input2 = strcmp(siape,"\n"); // nao pode ficar em branco
+    input3 = strcmp(cpf,"\n"); // nao pode ficar em branco
+    input4 = strcmp(nome,"\n"); // não pode ficar em branco
 
     if( !(input1 && input2 && input3 && input4) ) {
         printf("\nDigite Valores validos para entrada\nNao digite espacos\n\n");
@@ -339,7 +328,7 @@ void verificador_quantia(int quantia, int ordenador[])
     else printar_serv(ordenador);
 }
 
-int checarCodigos(char temp_cod[]) // função para comparar com os dos veiculos
+int checarCodigos(char temp_cod[])
 {
     for (int i = 0; i < MAX; ++i)
     {
@@ -363,10 +352,7 @@ char *caixa_correcao(char nome[])
     for(int i = 0 ; i < 255 ; ++i)
     {
         nome[0] = toupper(nome[0]);
-        if(nome[i] == ' ')
-        {
-            nome[i+1] = toupper(nome[i+1]);
-        }
+        if(nome[i] == ' ') {nome[i+1] = toupper(nome[i+1]);}
     }
     return nome;
 }
