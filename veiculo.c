@@ -119,7 +119,7 @@ void listar_veiculo_por_servidor(char cod_serv_v[]) {
         }
     }
     if(!count)
-        printf("Servidor nao existe ou nao possui veiculos\n");
+        printf("Servidor nao existe ou nao possui veiculos.\n");
 }
 
 void listar_veiculo_ordenado(char cod_serv_v[]) {
