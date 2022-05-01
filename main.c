@@ -248,6 +248,7 @@ int main()
                 printf("1. Listar veiculo por codigo\n");
                 printf("2. Listar veiculos de um servidor\n");
                 printf("3. Listar veiculos por ordem alfabetica\n");
+                printf("Opcao: ");
                 scanf("%c", &input);
                 fflush(stdin);
                 switch(input) {
