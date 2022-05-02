@@ -356,3 +356,13 @@ char *caixa_correcao(char nome[])
     }
     return nome;
 }
+
+int checar_cheio(){
+    int count = 0;
+    for(int i = 0; i < MAX; i++) {
+        if(ocupados[i]) {
+            count++;
+        }
+    }
+    return count;
+}

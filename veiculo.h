@@ -1,15 +1,15 @@
 #ifndef VEICULO_H
 #define VEICULO_H
 
-#define MAX 100
+#define MAX_V 1000
 
-extern char codigos_serv_v[MAX][255];
-extern char codigos_v[MAX][255];
-extern char modelos[MAX][255];
-extern char descricoes[MAX][255];
-extern char placas[MAX][255];
-extern char marcas[MAX][255];
-extern int ocupados_veiculos[MAX];
+extern char codigos_serv_v[MAX_V][255];
+extern char codigos_v[MAX_V][255];
+extern char modelos[MAX_V][255];
+extern char descricoes[MAX_V][255];
+extern char placas[MAX_V][255];
+extern char marcas[MAX_V][255];
+extern int ocupados_veiculos[MAX_V];
 
 void iniciar_ocupados_veiculos();
 int inserir_veiculo(char cod_serv_v[], char cod_v[], char mod[], char desc[], char plac[], char marc[]);

@@ -59,6 +59,11 @@ int main()
                 return 0;
 
             case '1': // criar servidor
+                if(checar_cheio() >= MAX+1){
+                    printf("Armazenamento cheio!\n");
+                    done = 0;
+                }
+                if(!done) {done = 1; break;}
                 do {
 
                     fflush(stdin);
@@ -171,6 +176,11 @@ int main()
                 break;
 
             case '5': //inserir veiculo
+                if(checar_cheio() >= MAX_V){
+                    printf("Armazenamento cheio!\n");
+                    done = 0;
+                }
+                if(!done) {done = 1; break;}
                 do {
                     printf("Digite o codigo do proprietario: ");
                     fgets(temp_cod_s_v, sizeof(temp_cod_s_v), stdin);

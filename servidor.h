@@ -30,5 +30,6 @@ int existe_cod(char codigo[]);
 void iniciar_ocupados();
 int checa_branco(char codigo[],char nome[], char siape[],char cpf[], char indentficador[]);
 char *caixa_correcao(char nome[]);
+int checar_cheio();
 
 #endif //SERVIDOR_H
