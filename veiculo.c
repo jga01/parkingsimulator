@@ -51,7 +51,7 @@ int alterar_veiculo(char cod_v[], char mod[], char desc[], char plac[], char mar
     marc[strcspn(marc, "\n")] = 0;
 
     for(int i = 0; i < MAX; i++) {
-        if(ocupados_veiculos[i] && !strcmp(cod_v, codigos_v[i]) && ocupados[i]) {
+        if(ocupados_veiculos[i] && !strcmp(cod_v, codigos_v[i])) {
             strcpy(modelos[i], mod);
             strcpy(descricoes[i], desc);
             strcpy(placas[i], plac);
@@ -197,8 +197,8 @@ void listar_veiculo_ordenado(char cod_serv_v[]) {
 int checar_servidor_veiculo(char cod_serv_v[]) {
     cod_serv_v[strcspn(cod_serv_v, "\n")] = 0;
 
-    for(int i = 0; i < MAX; i ++) {
-        if(!strcmp(cod_serv_v, cod[i]))
+    for(int i = 0; i < MAX; i++) {
+        if(!strcmp(cod_serv_v, cod[i]) && ocupados[i])
             return 1;
     }
     return 0;
