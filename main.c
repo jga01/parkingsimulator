@@ -59,7 +59,7 @@ int main()
                 return 0;
 
             case '1': // criar servidor
-                if(checar_cheio() >= MAX+1){
+                if(checar_cheio_servidores() >= MAX-1){
                     printf("Armazenamento cheio!\n");
                     done = 0;
                 }
@@ -176,7 +176,7 @@ int main()
                 break;
 
             case '5': //inserir veiculo
-                if(checar_cheio() >= MAX_V){
+                if(checar_cheio_veiculos() >= MAX_V){
                     printf("Armazenamento cheio!\n");
                     done = 0;
                 }

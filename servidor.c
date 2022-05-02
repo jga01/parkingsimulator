@@ -357,7 +357,7 @@ char *caixa_correcao(char nome[])
     return nome;
 }
 
-int checar_cheio(){
+int checar_cheio_servidores(){
     int count = 0;
     for(int i = 0; i < MAX; i++) {
         if(ocupados[i]) {

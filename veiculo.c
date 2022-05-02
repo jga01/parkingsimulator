@@ -241,3 +241,13 @@ char *busca_nome(char cod_serv_v[]) {
     }
     return 0;
 }
+
+int checar_cheio_veiculos() {
+    int count = 0;
+    for(int i = 0; i < MAX_V; i++) {
+        if(ocupados_veiculos[i]) {
+            count++;
+        }
+    }
+    return count;
+}

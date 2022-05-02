@@ -24,5 +24,6 @@ int checar_codigo_veiculo(char cod_v[]);
 int checar_descricao_veiculo(char desc[]);
 int checar_em_branco(char string[]);
 char *busca_nome(char cod_serv_v[]);
+int checar_cheio_veiculos();
 
 #endif //VEICULO_H
