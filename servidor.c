@@ -93,23 +93,23 @@ void deletarServidor(char entrada[])
     }
 }
 
-void menu_listar_server(int op)
+void menu_listar_server(char op)
 {
     switch (op) {
 
-        case 1: // printar tecnicos em ordem
+        case '1': // printar tecnicos em ordem
             ordenando(op);
             break;
 
-        case 2: // printar professor em ordem
+        case '2': // printar professor em ordem
             ordenando(op);
             break;
 
-        case 3: // printar todos em ordem
+        case '3': // printar todos em ordem
             ordenando(op);
             break;
 
-        case 4: // printar por cod
+        case '4': // printar por cod
             print_serv_cod();
             break;
 
@@ -133,9 +133,8 @@ void print_serv_cod()
         codigoServidor[strcspn(codigoServidor,"\n")] = 0;
         control++;
 
-        if(control == 2){
-            printf("\n#Quantia de tentativas excedidas retornando para menu#\n");
-            return;
+        if( !existe_cod(codigoServidor)){
+            printf("\n#Digite um codigo cadastrado#\n");
         }
     }while( !existe_cod(codigoServidor) );
 
@@ -167,7 +166,7 @@ void print_serv_cod()
     printf("###################FIM DA LISTAGEM####################\n\n");
  }
 
-void ordenando(int opcao)
+void ordenando(char opcao)
 {
     int i,j,quantia = 0;
     char copy_nome[MAX][255], aux[255];
@@ -176,10 +175,6 @@ void ordenando(int opcao)
     for ( i = 0;  i < MAX ; ++i )
     {
         ordenador[i] = 0;
-    }
-
-    for( i = 0 ; i < MAX ; ++i)
-    {
         if(ocupados[i]) strcpy(copy_nome[i],nome_serv[i]);
         else strcpy(copy_nome[i],"~");
     }
@@ -198,7 +193,7 @@ void ordenando(int opcao)
     }
 
     switch (opcao) {
-        case 1: // tecnicos
+        case '1': // tecnicos
 
             for( i = 0 ; i < MAX ; ++i)
             {
@@ -213,7 +208,7 @@ void ordenando(int opcao)
             }
             verificador_quantia(quantia,ordenador);
             break;
-        case 2: // professores
+        case '2': // professores
 
             for( i = 0 ; i < MAX ; ++i)
             {
@@ -228,7 +223,7 @@ void ordenando(int opcao)
             }
             verificador_quantia(quantia,ordenador);
             break;
-        case 3: // ordenando todos os valores
+        case '3': // ordenando todos os valores
 
             for(i = 0 ; i < MAX ; ++i)
             {
@@ -243,7 +238,6 @@ void ordenando(int opcao)
             }
             verificador_quantia(quantia,ordenador);
             break;
-
         default:
             break;
     }
@@ -253,7 +247,10 @@ int existe_cod(char codigo[])
 {
     for(int i = 0 ; i < MAX ; ++i)
     {
-        if(!strcmp(cod[i],codigo)) return i;
+        if(ocupados[i])
+        {
+            if(!strcmp(cod[i],codigo)) return i;
+        }
     }
     return 0; // o cod não existe no vetor
 }
@@ -313,8 +310,8 @@ int  type_serv()
         scanf("%d", &opcao);
         fflush(stdin);
 
-        if (opcao == 1) return 1; // professor
-        else if (opcao == 2) return 2; // Tecnico
+        if (opcao == 1) return opcao; // professor
+        else if (opcao == 2) return opcao; // Tecnico
         else printf("\nDigite um valor valido para o servidor\n");
 
     }while( opcao != 1 && opcao !=2 );

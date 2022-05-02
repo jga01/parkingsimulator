@@ -46,8 +46,8 @@ int main()
         printf("0. Sair do programa.\n\n");
 
         printf("Opcao: ");
-        scanf("%c", &input);
         fflush(stdin);
+        scanf("%c", &input);
 
         printf("\n");
 
@@ -59,41 +59,43 @@ int main()
                 return 0;
 
             case '1': // criar servidor
+
                 if(checar_cheio_servidores() >= MAX-1){
                     printf("Armazenamento cheio!\n");
                     done = 0;
                 }
                 if(!done) {done = 1; break;}
+
                 do {
 
                     fflush(stdin);
                     printf("Digite o codigo do Servidor : \n:");
-                    fgets(entrada,255,stdin);
+                    fgets(entrada,sizeof(entrada),stdin);
                     fflush(stdin);
                     printf("Digite o nome do Servidor : \n:");
-                    fgets(nome,255,stdin);
+                    fgets(nome,sizeof(nome),stdin);
                     fflush(stdin);
                     printf("Digite o siape do Servidor : \n:");
-                    fgets(siape,255,stdin);
+                    fgets(siape,sizeof(siape),stdin);
                     fflush(stdin);
                     printf("Digite o cpf do Servidor : \n:");
-                    fgets(cpf,255,stdin);
+                    fgets(cpf,sizeof(cpf),stdin);
                     strcpy(iden,"1");
 
                 }while( checa_branco(entrada,nome,siape,cpf,iden) );
 
                 fflush(stdin);
                 printf("Digite a data de nascimento do Servidor : \n:");
-                fgets(nasci,255,stdin);
+                fgets(nasci,sizeof(nasci),stdin);
                 fflush(stdin);
                 printf("Digite o rg do Servidor : \n:");
-                fgets(rg,255,stdin);
+                fgets(rg,sizeof(rg),stdin);
                 fflush(stdin);
                 printf("Digite o salario do servidor : \n:");
-                fgets(salario,255,stdin);
+                fgets(salario,sizeof(salario),stdin);
                 fflush(stdin);
                 printf("Digite o endereco do Servidor : \n:");
-                fgets(endereco,255,stdin);
+                fgets(endereco,sizeof(endereco),stdin);
 
                 op = type_serv();
                 if(op == 1)
@@ -105,44 +107,43 @@ int main()
                 break;
 
             case '2':// atualizar servidor
+                do {
+                    printf("Digite o cod do servidor\n:");
+                    fflush(stdin);
+                    fgets(entrada,sizeof(entrada),stdin);
+                    entrada[strcspn(entrada,"\n")] = 0;
 
-                printf("Digite o COD do servidor\n:");
-                scanf("%s",&entrada);
-                fflush(stdin);
-
-                while(!existe_cod(entrada))
-                {
-                    printf("Esse cod nao faz referencia a nenhum servidor\n");
-                    printf("Digite um cod valido\n:");
-                    scanf("%s",&entrada);
-                }
+                    if(!existe_cod(entrada)){
+                        printf("\n#Esse codigo nao existe digite um valido!#\n");
+                    }
+                }while( !existe_cod(entrada) );
 
                 do {
                     fflush(stdin);
                     printf("Digite o NOVO Nome do Servidor : \n:");
-                    fgets(nome,255,stdin);
+                    fgets(nome,sizeof(nome),stdin);
                     printf("Digite o NOVO Siape do Servidor : \n:");
                     fflush(stdin);
-                    fgets(siape,255,stdin);
+                    fgets(siape,sizeof(siape),stdin);
                     printf("Digite o NOVO Cpf do Servidor : \n:");
                     fflush(stdin);
-                    fgets(cpf,255,stdin);
+                    fgets(cpf,sizeof(cpf),stdin);
                     strcpy(iden, "2");
 
                 }while( checa_branco(entrada,nome,siape,cpf,iden) );
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
                 fflush(stdin);
-                fgets(nasci,255,stdin);
+                fgets(nasci,sizeof(nasci),stdin);
                 printf("Digite o NOVO Rg do Servidor : \n:");
                 fflush(stdin);
-                fgets(rg,255,stdin);
+                fgets(rg,sizeof(rg),stdin);
                 printf("Digite o NOVO salario do servidor : \n:");
                 fflush(stdin);
-                fgets(salario,255,stdin);
-                printf("Digite o NOVO endereco do Servidor : \n:"); // usar a ideia da concatenação ?
+                fgets(salario,sizeof(salario),stdin);
+                printf("Digite o NOVO endereco do Servidor : \n:");
                 fflush(stdin);
-                fgets(endereco,255,stdin);
+                fgets(endereco,sizeof(endereco),stdin);
 
                 op = type_serv();
                 if(op == 1) strcpy(tipo,"Professor");
@@ -152,10 +153,16 @@ int main()
                 break;
 
             case '3': // deletar servidor
+                do {
+                    printf("Digite o cod do servidor\n:");
+                    fflush(stdin);
+                    fgets(entrada,sizeof(entrada),stdin);
+                    entrada[strcspn(entrada,"\n")] = 0;
 
-                printf("Digite o codigo do servidor: ");
-                fflush(stdin);
-                fgets(entrada,255,stdin);
+                    if(!existe_cod(entrada)){
+                        printf("\n#Esse codigo nao existe digite um valido!#\n");
+                    }
+                }while( !existe_cod(entrada) );
 
                 deletarServidor(entrada);
                 excluir_veiculos_servidor(entrada);
@@ -169,10 +176,10 @@ int main()
                 printf("3. Printar Todos \n");
                 printf("4.Printar um servidor pelo cod dele.\n");
 
-                scanf("%d",&op);
                 fflush(stdin);
+                scanf("%c",&input);
 
-                menu_listar_server(op);
+                menu_listar_server(input);
                 break;
 
             case '5': //inserir veiculo
