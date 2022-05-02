@@ -153,6 +153,7 @@ int main()
                 fgets(entrada,255,stdin);
 
                 deletarServidor(entrada);
+                excluir_veiculos_servidor(entrada);
                 break;
 
             case '4': // listar servidor
