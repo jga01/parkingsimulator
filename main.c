@@ -253,6 +253,7 @@ int main()
                     printf("Digite um codigo valido e existente.\n");
                     done = 0;
                 } if(!done) {done=1;break;}
+                printf("Veiculo deletado!\n");
                 excluir_veiculo(temp_cod_v);
                 break;
             case '8': //listar veiculo
