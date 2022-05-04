@@ -14,7 +14,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="retirando comentarios e testando o cod, tudo ok.">
+    <list default="true" id="f2681787-6dc0-457a-a3b0-6dd1ff171d7b" name="Changes" comment="retirando comentario e melhorando um pouco a estrutura do cod">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
@@ -112,7 +114,9 @@
       <workItem from="1651187335130" duration="5492000" />
       <workItem from="1651234137281" duration="7440000" />
       <workItem from="1651407213445" duration="4774000" />
-      <workItem from="1651518545254" duration="4523000" />
+      <workItem from="1651518545254" duration="5237000" />
+      <workItem from="1651622066071" duration="346000" />
+      <workItem from="1651704452991" duration="1060000" />
     </task>
     <task id="LOCAL-00001" summary="Adicionando mssg de ola">
       <created>1649209395838</created>
@@ -282,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651411917509</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="retirando comentario e melhorando um pouco a estrutura do cod">
+      <created>1651523198587</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1651523198587</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +334,8 @@
     <MESSAGE value="Melhorando a estrutura do cod e implementando a caixa baixa" />
     <MESSAGE value="implementado verificação de caixa para 2 letras" />
     <MESSAGE value="retirando comentarios e testando o cod, tudo ok." />
-    <option name="LAST_COMMIT_MESSAGE" value="retirando comentarios e testando o cod, tudo ok." />
+    <MESSAGE value="retirando comentario e melhorando um pouco a estrutura do cod" />
+    <option name="LAST_COMMIT_MESSAGE" value="retirando comentario e melhorando um pouco a estrutura do cod" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -95,43 +95,32 @@ void deletarServidor(char entrada[])
 
 void menu_listar_server(char op)
 {
-    switch (op) {
+    if( op == '1' || op == '2' || op == '3' ){
+        copying_nomes(op);
 
-        case '1': // printar tecnicos em ordem
-            ordenando(op);
-            break;
+    }else if( op == '4'){
+        print_serv_cod();
 
-        case '2': // printar professor em ordem
-            ordenando(op);
-            break;
-
-        case '3': // printar todos em ordem
-            ordenando(op);
-            break;
-
-        case '4': // printar por cod
-            print_serv_cod();
-            break;
-
-        default:
-            printf("\n#Essa opcao nao existe !!#\n#Tente Novamente# \n");
-            break;
+    }else{
+        printf("\nEssa opção não existe !!\n");
     }
     return ;
 }
 
 void print_serv_cod()
 {
-    int control = 0;
-    int  indice[255];
+    int  indice[MAX];
     char codigoServidor[255];
+
+    for(int i = 0 ; i < MAX; ++i){
+        indice[i] = 0;
+    }
 
     do {
         printf("Digite o cod do servidor\n:");
         fflush(stdin);
-        fgets(codigoServidor,255,stdin);
+        fgets(codigoServidor,sizeof(codigoServidor),stdin);
         codigoServidor[strcspn(codigoServidor,"\n")] = 0;
-        control++;
 
         if( !existe_cod(codigoServidor)){
             printf("\n#Digite um codigo cadastrado#\n");
@@ -142,12 +131,12 @@ void print_serv_cod()
     printar_serv(indice);
 }
 
- void printar_serv( int ordenado[])
- {
+void printar_serv( int ordenado[] )
+{
     char aux[255];
     printf("\n##################LISTANDO###################\n");
-    for( int i = 0 ; i < MAX ; ++i)
-    {
+
+    for( int i = 0 ; i < MAX ; ++i){
         if( ordenado[i] )
         {
             strcpy( aux, caixa_correcao(nome_serv[ordenado[i]] ) );
@@ -161,27 +150,24 @@ void print_serv_cod()
             printf("Tipo de Servidor: %s\n", tipo_serv[ordenado[i]] );
             printf("Endereco: %s\n\n", ende_serv[ordenado[i]] );
         }
-
     }
     printf("###################FIM DA LISTAGEM####################\n\n");
- }
+}
 
-void ordenando(char opcao)
-{
-    int i,j,quantia = 0;
+void copying_nomes(char opcao) {
+
     char copy_nome[MAX][255], aux[255];
-    int ordenador[255];
+    int ordenador[MAX];
 
-    for ( i = 0;  i < MAX ; ++i )
+    for ( int i = 0;  i < MAX ; ++i )
     {
         ordenador[i] = 0;
-        if(ocupados[i]) strcpy(copy_nome[i],nome_serv[i]);
+        if( ocupados[i] ) strcpy(copy_nome[i],nome_serv[i]);
         else strcpy(copy_nome[i],"~");
     }
 
-    for( i = 0 ; i < MAX; ++i)
-    {
-        for( j = 0 ; j < (MAX - i - 1) ; ++j)
+    for( int i = 0 ; i < MAX; ++i){
+        for( int j = 0 ; j < (MAX - i - 1) ; ++j)
         {
             if( (tolower(copy_nome[j][0]) > tolower(copy_nome[j+1][0]) ) || ( (tolower(copy_nome[j][0]) == tolower(copy_nome[j+1][0])) && (tolower(copy_nome[j][1]) > tolower(copy_nome[j+1][1])) ) )
             {
@@ -192,63 +178,30 @@ void ordenando(char opcao)
         }
     }
 
-    switch (opcao) {
-        case '1': // tecnicos
+    ordena_servidor(opcao,copy_nome, ordenador);
+}
 
-            for( i = 0 ; i < MAX ; ++i)
-            {
-                for( j = 0 ; j < (MAX - i - 1) ; ++j)
-                {
-                    if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Tecnico",tipo_serv[j]))
-                    {
-                        ordenador[i] = j;
-                        quantia++;
-                    }
-                }
-            }
-            verificador_quantia(quantia,ordenador);
-            break;
-        case '2': // professores
+// passar o ordenador, e copy nome;
+void ordena_servidor(char choice,char copy_nome[MAX][255],int vet_ordena[]){
 
-            for( i = 0 ; i < MAX ; ++i)
-            {
-                for( j = 0 ; j < (MAX - i - 1) ; ++j)
-                {
-                    if( !strcmp(nome_serv[j],copy_nome[i]) && !strcmp("Professor",tipo_serv[j]))
-                    {
-                        ordenador[i] = j;
-                        quantia++;
-                    }
-                }
-            }
-            verificador_quantia(quantia,ordenador);
-            break;
-        case '3': // ordenando todos os valores
+    int quantia =0;
 
-            for(i = 0 ; i < MAX ; ++i)
-            {
-                for(j = 0 ; j < MAX ; ++j)
-                {
-                    if(!strcmp(nome_serv[j],copy_nome[i]))
-                    {
-                        ordenador[i] = j;
-                        quantia++;
-                    }
-                }
+    for(int i = 0 ; i < MAX ; ++i){
+        for(int j = 0 ; j < (MAX - i - 1) ; ++j){
+            if( !strcmp(nome_serv[j],copy_nome[i]) && (check_type_serv(choice,tipo_serv[j])) ){
+                vet_ordena[i] = j;
+                quantia++;
             }
-            verificador_quantia(quantia,ordenador);
-            break;
-        default:
-            break;
+        }
     }
+    verificador_quantia(quantia,vet_ordena);
+    return ;
 }
 
 int existe_cod(char codigo[])
 {
-    for(int i = 0 ; i < MAX ; ++i)
-    {
-        if(ocupados[i])
-        {
+    for(int i = 0 ; i < MAX ; ++i){
+        if( ocupados[i] ){
             if(!strcmp(cod[i],codigo)) return i;
         }
     }
@@ -282,7 +235,7 @@ int checa_repeti(char codigo[],char nome[], char siape[],char cpf[], char iden[]
             }
         }
     }
-   return 0;
+    return 0;
 }
 
 int checa_branco(char codigo[],char nome[], char siape[],char cpf[], char indentificador[])
@@ -327,8 +280,7 @@ void verificador_quantia(int quantia, int ordenador[])
 
 int checarCodigos(char temp_cod[])
 {
-    for (int i = 0; i < MAX; ++i)
-    {
+    for (int i = 0; i < MAX; ++i){
         if(!strcmp(temp_cod, codigos_v[i])) {
             return 1;
         }
@@ -338,16 +290,14 @@ int checarCodigos(char temp_cod[])
 
 void iniciar_ocupados()
 {
-    for(int i = 0; i < MAX; i++)
-    {
+    for(int i = 0; i < MAX; i++){
         ocupados[i] = 0;
     }
 }
 
 char *caixa_correcao(char nome[])
 {
-    for(int i = 0 ; i < 255 ; ++i)
-    {
+    for(int i = 0 ; i < 255 ; ++i){
         nome[0] = toupper(nome[0]);
         if(nome[i] == ' ') {nome[i+1] = toupper(nome[i+1]);}
     }
@@ -362,4 +312,11 @@ int checar_cheio_servidores(){
         }
     }
     return count;
+}
+
+int check_type_serv(char opcao,char type_serv[])
+{
+    if(opcao == '1') return (!strcmp("Tecnico",type_serv)) ;
+    else if(opcao == '2') return (!strcmp("Professor",type_serv)) ;
+    else return 1;
 }

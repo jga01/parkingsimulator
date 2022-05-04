@@ -20,7 +20,7 @@ void atualizarServidor(char entrada[255],char nome[255],char siape[255],char cpf
 void menu_listar_server(char input);
 void deletarServidor(char entrada[]);
 void print_serv_cod();
-void ordenando(char opcao);
+void copying_nomes(char opcao);
 int type_serv();
 void printar_serv(int ordenado[]);
 void verificador_quantia(int quantia, int ordenador[]);
@@ -31,5 +31,7 @@ void iniciar_ocupados();
 int checa_branco(char codigo[],char nome[], char siape[],char cpf[], char indentficador[]);
 char *caixa_correcao(char nome[]);
 int checar_cheio_servidores();
+void ordena_servidor(char choice,char copy_nome[MAX][255],int vet_ordena[]);
+int check_type_serv(char opcao, char type_serv[]);
 
 #endif //SERVIDOR_H

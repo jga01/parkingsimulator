@@ -3,16 +3,14 @@
 #include "servidor.h"
 #include "veiculo.h"
 
-int op;
-char iden[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],tipo[255],salario[255],endereco[255];
-
 
 int main()
 {
     iniciar_ocupados();
     iniciar_ocupados_veiculos();
 
-    int done = 1;
+    char aux[255],entrada[255],nome[255],siape[255],cpf[255],nasci[255],rg[255],tipo[255],salario[255],endereco[255];
+    int done = 1,op;
     char temp_cod_s_v[256];
     char temp_cod_v[256];
     char temp_marca[256];
@@ -80,9 +78,9 @@ int main()
                     printf("Digite o cpf do Servidor : \n:");
                     fgets(cpf,sizeof(cpf),stdin);
                     fflush(stdin);
-                    strcpy(iden,"1");
+                    strcpy(aux,"1");
 
-                }while( checa_branco(entrada,nome,siape,cpf,iden) );
+                }while( checa_branco(entrada,nome,siape,cpf,aux) );
 
                 printf("Digite a data de nascimento do Servidor : \n:");
                 fgets(nasci,sizeof(nasci),stdin);
@@ -128,9 +126,9 @@ int main()
                     printf("Digite o NOVO Cpf do Servidor : \n:");
                     fgets(cpf,sizeof(cpf),stdin);
                     fflush(stdin);
-                    strcpy(iden, "2");
+                    strcpy(aux, "2");
 
-                }while( checa_branco(entrada,nome,siape,cpf,iden) );
+                }while( checa_branco(entrada,nome,siape,cpf,aux) );
 
                 printf("Digite a NOVA data de nascimento do Servidor : \n:");
                 fgets(nasci,sizeof(nasci),stdin);
