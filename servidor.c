@@ -27,7 +27,7 @@ void criarServidor(char entrada[],char nome[],char siape[],char cpf[],char nasci
     {
         if ( !(ocupados[i]) )
         {
-            if( !i ) continue; // não quero cadastrar no indice 0
+            if( !i ) continue;
             index = i;
             break;
         }
@@ -91,20 +91,6 @@ void deletarServidor(char entrada[])
     }else {
         printf("\nDigite um codigo de servidor valido!\n");
     }
-}
-
-void menu_listar_server(char op)
-{
-    if( op == '1' || op == '2' || op == '3' ){
-        copying_nomes(op);
-
-    }else if( op == '4'){
-        print_serv_cod();
-
-    }else{
-        printf("\nEssa opção não existe !!\n");
-    }
-    return ;
 }
 
 void print_serv_cod()
@@ -187,7 +173,8 @@ void ordena_servidor(char choice,char copy_nome[MAX][255],int vet_ordena[]){
     int quantia =0;
 
     for(int i = 0 ; i < MAX ; ++i){
-        for(int j = 0 ; j < (MAX - i - 1) ; ++j){
+        for(int j = 0 ; j < (MAX - i - 1) ; ++j)
+        {
             if( !strcmp(nome_serv[j],copy_nome[i]) && (check_type_serv(choice,tipo_serv[j])) ){
                 vet_ordena[i] = j;
                 quantia++;
@@ -212,11 +199,11 @@ int checa_repeti(char codigo[],char nome[], char siape[],char cpf[], char iden[]
 {
     int teste, indice = existe_cod(codigo);
 
-    codigo[strcspn(codigo,"\n")] = 0; // não pode repetir
-    nome[strcspn(nome, "\n")] = 0;
-    siape[strcspn(siape,"\n")] = 0; // não pode repetir
-    cpf[strcspn(cpf,"\n")] = 0; // não pode repetir
-    iden[strcspn(iden,"\n")] = 0;
+    codigo[strcspn(codigo,"\n")] = '\0'; // não pode repetir
+    nome[strcspn(nome, "\n")] = '\0';
+    siape[strcspn(siape,"\n")] = '\0'; // não pode repetir
+    cpf[strcspn(cpf,"\n")] = '\0'; // não pode repetir
+    iden[strcspn(iden,"\n")] = '\0';
 
     for (int i = 1; i < MAX; ++i) {
 
@@ -300,6 +287,8 @@ char *caixa_correcao(char nome[])
     for(int i = 0 ; i < 255 ; ++i){
         nome[0] = toupper(nome[0]);
         if(nome[i] == ' ') {nome[i+1] = toupper(nome[i+1]);}
+        if(nome[i-1] == ' ') continue;
+        else{nome[i] = tolower(nome[i]);}
     }
     return nome;
 }

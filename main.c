@@ -173,11 +173,17 @@ int main()
                 printf("2. Printar apenas os professores \n");
                 printf("3. Printar Todos \n");
                 printf("4.Printar um servidor pelo cod dele.\n");
-
+                
+                fflush(stdin);
                 scanf("%c",&input);
                 fflush(stdin);
 
-                menu_listar_server(input);
+                if( input == '1' || input == '2' || input == '3' ){
+                    copying_nomes(input);
+                }else if( input == '4'){
+                    print_serv_cod();
+                }else printf("\nEssa opção não existe !!\n");
+
                 break;
 
             case '5': //inserir veiculo
